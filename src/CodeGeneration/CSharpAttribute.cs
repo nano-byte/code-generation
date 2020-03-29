@@ -21,7 +21,7 @@ namespace NanoByte.CodeGeneration
 
         public List<string> Arguments { get; } = new List<string>();
 
-        public AttributeListSyntax ToSyntax()
+        internal AttributeListSyntax ToSyntax()
         {
             var attribute = Attribute(IdentifierName(Identifier.Name));
 

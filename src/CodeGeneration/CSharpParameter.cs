@@ -28,10 +28,10 @@ namespace NanoByte.CodeGeneration
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
-        public ParameterSyntax ToParameterSyntax()
+        internal ParameterSyntax ToParameterSyntax()
             => Parameter(Identifier(Name)).WithType(Type.ToSyntax());
 
-        public ArgumentSyntax ToArgumentSyntax()
+        internal ArgumentSyntax ToArgumentSyntax()
         {
             var literal = Value switch
             {

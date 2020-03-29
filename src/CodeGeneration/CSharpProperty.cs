@@ -30,7 +30,7 @@ namespace NanoByte.CodeGeneration
 
         public bool HasSetter { get; set; }
 
-        public IEnumerable<string> GetNamespaces()
+        internal IEnumerable<string> GetNamespaces()
         {
             foreach (string? ns in Attributes.Select(x => x.Identifier.Namespace))
             {
@@ -48,7 +48,7 @@ namespace NanoByte.CodeGeneration
             }
         }
 
-        public PropertyDeclarationSyntax ToSyntax()
+        internal PropertyDeclarationSyntax ToSyntax()
         {
             var propertyDeclaration =
                 PropertyDeclaration(Type.ToSyntax(), Identifier(Name))

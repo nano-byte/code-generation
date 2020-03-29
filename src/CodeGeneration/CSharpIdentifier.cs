@@ -50,7 +50,7 @@ namespace NanoByte.CodeGeneration
 
         public List<CSharpIdentifier> TypeArguments { get; } = new List<CSharpIdentifier>();
 
-        public IEnumerable<string> GetNamespaces()
+        internal IEnumerable<string> GetNamespaces()
         {
             if (!string.IsNullOrEmpty(Namespace))
                 yield return Namespace;
@@ -59,7 +59,7 @@ namespace NanoByte.CodeGeneration
                 yield return ns;
         }
 
-        public TypeSyntax ToSyntax()
+        internal TypeSyntax ToSyntax()
         {
             var type = Name switch
             {

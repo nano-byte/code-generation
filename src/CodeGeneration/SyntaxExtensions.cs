@@ -10,9 +10,9 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
-    public static class SyntaxExtensions
+    internal static class SyntaxExtensions
     {
-        public static TSyntax WithDocumentation<TSyntax>(this TSyntax node, string? summary)
+        internal static TSyntax WithDocumentation<TSyntax>(this TSyntax node, string? summary)
             where TSyntax : SyntaxNode
         {
             if (string.IsNullOrEmpty(summary)) return node;

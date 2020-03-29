@@ -21,7 +21,7 @@ namespace NanoByte.CodeGeneration
 
         public List<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
 
-        public IEnumerable<string> GetNamespaces()
+        internal IEnumerable<string> GetNamespaces()
         {
             foreach (string ns in Type.GetNamespaces())
                 yield return ns;
@@ -30,11 +30,11 @@ namespace NanoByte.CodeGeneration
                 yield return ns;
         }
 
-        public ObjectCreationExpressionSyntax ToInvocationSyntax()
+        internal ObjectCreationExpressionSyntax ToInvocationSyntax()
             => ObjectCreationExpression(Type.ToSyntax())
                .WithArgumentList(GetArgumentList(thisKeyword: true));
 
-        public ConstructorDeclarationSyntax ToDeclarationSyntax(string typeName)
+        internal ConstructorDeclarationSyntax ToDeclarationSyntax(string typeName)
             => ConstructorDeclaration(Identifier(typeName))
               .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
               .WithParameterList(GetParameterList())
