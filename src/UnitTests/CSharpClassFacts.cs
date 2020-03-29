@@ -19,7 +19,7 @@ namespace NanoByte.CodeGeneration
             {
                 Description = "My class\nDetails",
                 Attributes = {dummyAttribute},
-                BaseClass = new CSharpClassConstruction(baseClass)
+                BaseClass = new CSharpConstructor(baseClass)
                 {
                     Parameters =
                     {
@@ -34,7 +34,7 @@ namespace NanoByte.CodeGeneration
                     {
                         Description = "My property",
                         Attributes = {dummyAttribute},
-                        GetterExpression = new CSharpClassConstruction(otherClass)
+                        GetterExpression = new CSharpConstructor(otherClass)
                         {
                             Parameters =
                             {

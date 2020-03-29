@@ -10,11 +10,11 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
-    public class CSharpClassConstruction
+    public class CSharpConstructor
     {
         public CSharpIdentifier Type { get; }
 
-        public CSharpClassConstruction(CSharpIdentifier type)
+        public CSharpConstructor(CSharpIdentifier type)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
         }
@@ -30,11 +30,11 @@ namespace NanoByte.CodeGeneration
                 yield return ns;
         }
 
-        public ObjectCreationExpressionSyntax ToNewSyntax()
+        public ObjectCreationExpressionSyntax ToInvocationSyntax()
             => ObjectCreationExpression(Type.ToSyntax())
                .WithArgumentList(GetArgumentList(thisKeyword: true));
 
-        public ConstructorDeclarationSyntax ToConstructorSyntax(string typeName)
+        public ConstructorDeclarationSyntax ToDeclarationSyntax(string typeName)
             => ConstructorDeclaration(Identifier(typeName))
               .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
               .WithParameterList(GetParameterList())

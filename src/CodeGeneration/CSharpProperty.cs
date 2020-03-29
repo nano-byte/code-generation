@@ -26,7 +26,7 @@ namespace NanoByte.CodeGeneration
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
-        public CSharpClassConstruction? GetterExpression { get; set; }
+        public CSharpConstructor? GetterExpression { get; set; }
 
         public bool HasSetter { get; set; }
 
@@ -57,7 +57,7 @@ namespace NanoByte.CodeGeneration
 
             return (GetterExpression == null)
                 ? propertyDeclaration.WithAccessorList(AccessorList(List(GetAccessors())))
-                : propertyDeclaration.WithExpressionBody(ArrowExpressionClause(GetterExpression.ToNewSyntax()))
+                : propertyDeclaration.WithExpressionBody(ArrowExpressionClause(GetterExpression.ToInvocationSyntax()))
                                      .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
         }
 

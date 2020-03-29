@@ -15,11 +15,11 @@ namespace NanoByte.CodeGeneration
             : base(identifier)
         {}
 
-        public CSharpClassConstruction? BaseClass { get; set; }
+        public CSharpConstructor? BaseClass { get; set; }
 
-        public CSharpClassConstruction GetConstruction()
+        public CSharpConstructor GetConstruction()
         {
-            var result = new CSharpClassConstruction(Identifier);
+            var result = new CSharpConstructor(Identifier);
             if (BaseClass != null)
                 result.Parameters.AddRange(BaseClass.Parameters.Where(x => !x.HasStaticValue));
             return result;
@@ -53,7 +53,7 @@ namespace NanoByte.CodeGeneration
         protected override IEnumerable<MemberDeclarationSyntax> GetMemberDeclarations()
         {
             if (BaseClass != null && BaseClass.Parameters.Count != 0)
-                yield return BaseClass.ToConstructorSyntax(Identifier.Name);
+                yield return BaseClass.ToDeclarationSyntax(Identifier.Name);
 
             foreach (var member in base.GetMemberDeclarations())
                 yield return member.WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)));

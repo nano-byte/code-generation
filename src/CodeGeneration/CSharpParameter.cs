@@ -8,6 +8,9 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
+    /// <summary>
+    /// A parameter for a <see cref="CSharpConstructor"/>.
+    /// </summary>
     public class CSharpParameter
     {
         public CSharpIdentifier Type { get; }
