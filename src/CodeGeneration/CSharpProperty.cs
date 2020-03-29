@@ -16,15 +16,15 @@ namespace NanoByte.CodeGeneration
 
         public string Name { get; }
 
-        public string? Description { get; set; }
-
-        public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
-
         public CSharpProperty(CSharpIdentifier type, string name)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
+
+        public string? Summary { get; set; }
+
+        public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
         public CSharpConstructor? GetterExpression { get; set; }
 
@@ -53,7 +53,7 @@ namespace NanoByte.CodeGeneration
             var propertyDeclaration =
                 PropertyDeclaration(Type.ToSyntax(), Identifier(Name))
                    .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
-                   .WithDocumentation(Description);
+                   .WithDocumentation(Summary);
 
             return (GetterExpression == null)
                 ? propertyDeclaration.WithAccessorList(AccessorList(List(GetAccessors())))

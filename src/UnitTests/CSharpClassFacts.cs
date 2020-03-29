@@ -17,7 +17,7 @@ namespace NanoByte.CodeGeneration
             var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "Dummy")) {Arguments = {"myValue"}};
             Assert(new CSharpClass(myClass)
             {
-                Description = "My class\nDetails",
+                Summary = "My class\nDetails",
                 Attributes = {dummyAttribute},
                 BaseClass = new CSharpConstructor(baseClass)
                 {
@@ -32,7 +32,7 @@ namespace NanoByte.CodeGeneration
                 {
                     new CSharpProperty(myInterface, "MyProperty")
                     {
-                        Description = "My property",
+                        Summary = "My property",
                         Attributes = {dummyAttribute},
                         GetterExpression = new CSharpConstructor(otherClass)
                         {

@@ -17,14 +17,14 @@ namespace NanoByte.CodeGeneration
             var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "Dummy")) {Arguments = {"myValue"}};
             Assert(new CSharpInterface(myInterface)
             {
-                Description = "My interface\nDetails",
+                Summary = "My interface\nDetails",
                 Attributes = {dummyAttribute},
                 Interfaces = {baseInterface},
                 Properties =
                 {
                     new CSharpProperty(endpointInterface, "MyProperty")
                     {
-                        Description = "My property",
+                        Summary = "My property",
                         Attributes = {dummyAttribute}
                     }
                 }

@@ -20,7 +20,7 @@ namespace NanoByte.CodeGeneration
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
         }
 
-        public string? Description { get; set; }
+        public string? Summary { get; set; }
 
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
@@ -33,7 +33,7 @@ namespace NanoByte.CodeGeneration
             var member = GetMemberDeclaration()
                         .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword))
                         .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
-                        .WithDocumentation(Description);
+                        .WithDocumentation(Summary);
 
             return CompilationUnit()
                   .WithUsings(List(namespaces.Select(x => UsingDirective(IdentifierName(x)))))
