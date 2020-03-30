@@ -34,5 +34,17 @@ namespace NanoByte.CodeGeneration
                     XmlText().WithTextTokens(TokenList(XmlTextNewLine("\n", continueXmlDocumentationComment: false)))
                 })))));
         }
+
+        internal static LiteralExpressionSyntax? ToLiteralSyntax(this object? value)
+            => value switch
+            {
+                bool x => LiteralExpression(x ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
+                int x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
+                long x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
+                float x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
+                double x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
+                string x => LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(x)),
+                _ => null
+            };
     }
 }

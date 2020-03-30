@@ -2,7 +2,6 @@
 // Licensed under the MIT License
 
 using System;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -33,21 +32,10 @@ namespace NanoByte.CodeGeneration
 
         internal ArgumentSyntax ToArgumentSyntax()
         {
-            var literal = Value switch
-            {
-                bool value => LiteralExpression(value ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
-                int value => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(value)),
-                long value => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(value)),
-                float value => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(value)),
-                double value => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(value)),
-                string value => LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(value)),
-                _ => null
-            };
-            return literal switch
-            {
-                null => Argument(IdentifierName(Name)),
-                _ => Argument(literal).WithNameColon(NameColon(IdentifierName(Name)))
-            };
+            var literal = Value.ToLiteralSyntax();
+            return (literal == null)
+                ? Argument(IdentifierName(Name))
+                : Argument(literal).WithNameColon(NameColon(IdentifierName(Name)));
         }
 
         public override string ToString()

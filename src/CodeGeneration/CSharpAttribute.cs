@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -19,7 +18,7 @@ namespace NanoByte.CodeGeneration
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
         }
 
-        public List<string> Arguments { get; } = new List<string>();
+        public List<object> Arguments { get; } = new List<object>();
 
         internal AttributeListSyntax ToSyntax()
         {
@@ -29,7 +28,7 @@ namespace NanoByte.CodeGeneration
             {
                 attribute = attribute
                    .WithArgumentList(AttributeArgumentList(SeparatedList(Arguments.Select(value =>
-                        AttributeArgument(LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(value)))))));
+                        AttributeArgument(value.ToLiteralSyntax() ?? throw new InvalidOperationException($"{value} is not literal/constant value."))))));
             }
 
             return AttributeList(SingletonSeparatedList(attribute));
