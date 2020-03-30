@@ -14,7 +14,7 @@ namespace NanoByte.CodeGeneration
                 TypeArguments = {new CSharpIdentifier(ns: "Models", name: "MyModel")}
             };
 
-            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "Dummy")) {Arguments = {"myValue"}};
+            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute")) {Arguments = {"myValue"}};
             Assert(new CSharpInterface(myInterface)
             {
                 Summary = "My interface\nDetails",

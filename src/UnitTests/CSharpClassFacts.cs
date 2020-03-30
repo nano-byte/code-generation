@@ -14,7 +14,7 @@ namespace NanoByte.CodeGeneration
             var baseClass = new CSharpIdentifier(ns: "Namespace2", name: "BaseClass");
             var endpointInterface = new CSharpIdentifier("TypedRest.Endpoints", "IEndpoint");
 
-            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "Dummy")) {Arguments = {"myValue"}};
+            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute")) {Arguments = {"myValue"}};
             Assert(new CSharpClass(myClass)
             {
                 Summary = "My class\nDetails",

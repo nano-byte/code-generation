@@ -23,7 +23,7 @@ namespace NanoByte.CodeGeneration
 
         internal AttributeListSyntax ToSyntax()
         {
-            var attribute = Attribute(IdentifierName(Identifier.Name));
+            var attribute = Attribute(IdentifierName(TrimAttributeSuffix(Identifier.Name)));
 
             if (Arguments.Count != 0)
             {
@@ -34,5 +34,10 @@ namespace NanoByte.CodeGeneration
 
             return AttributeList(SingletonSeparatedList(attribute));
         }
+
+        private static string TrimAttributeSuffix(string name)
+            => name.EndsWith("Attribute")
+                ? name.Remove(name.Length - "Attribute".Length)
+                : name;
     }
 }
