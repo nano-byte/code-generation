@@ -28,7 +28,7 @@ namespace NanoByte.CodeGeneration
             {
                 attribute = attribute
                    .WithArgumentList(AttributeArgumentList(SeparatedList(Arguments.Select(value =>
-                        AttributeArgument(value.ToLiteralSyntax() ?? throw new InvalidOperationException($"{value} is not literal/constant value."))))));
+                        AttributeArgument(value.ToLiteralSyntax())))));
             }
 
             return AttributeList(SingletonSeparatedList(attribute));

@@ -35,7 +35,7 @@ namespace NanoByte.CodeGeneration
                 })))));
         }
 
-        internal static LiteralExpressionSyntax? ToLiteralSyntax(this object? value)
+        internal static LiteralExpressionSyntax ToLiteralSyntax(this object value)
             => value switch
             {
                 bool x => LiteralExpression(x ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
@@ -44,7 +44,7 @@ namespace NanoByte.CodeGeneration
                 float x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
                 double x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
                 string x => LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(x)),
-                _ => null
+                _ => throw new InvalidOperationException($"{value} is not literal/constant value.")
             };
     }
 }

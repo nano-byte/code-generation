@@ -31,12 +31,9 @@ namespace NanoByte.CodeGeneration
             => Parameter(Identifier(Name)).WithType(Type.ToSyntax());
 
         internal ArgumentSyntax ToArgumentSyntax()
-        {
-            var literal = Value.ToLiteralSyntax();
-            return (literal == null)
-                ? Argument(IdentifierName(Name))
-                : Argument(literal).WithNameColon(NameColon(IdentifierName(Name)));
-        }
+            => (Value == null)
+            ? Argument(IdentifierName(Name))
+            : Argument(Value.ToLiteralSyntax()).WithNameColon(NameColon(IdentifierName(Name)));
 
         public override string ToString()
             => Value == null
