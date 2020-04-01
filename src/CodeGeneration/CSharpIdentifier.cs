@@ -45,9 +45,6 @@ namespace NanoByte.CodeGeneration
             Namespace = ns;
         }
 
-        public CSharpIdentifier AsNullable()
-            => new CSharpIdentifier(Namespace, Name, nullable: true);
-
         public List<CSharpIdentifier> TypeArguments { get; } = new List<CSharpIdentifier>();
 
         internal IEnumerable<string> GetNamespaces()
@@ -74,6 +71,9 @@ namespace NanoByte.CodeGeneration
             };
             return Nullable ? NullableType(type) : type;
         }
+
+        public CSharpIdentifier ToNullable()
+            => new CSharpIdentifier(Namespace, Name, nullable: true);
 
         public CSharpIdentifier ToInterface()
         {
