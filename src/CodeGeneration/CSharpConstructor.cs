@@ -49,7 +49,7 @@ namespace NanoByte.CodeGeneration
 
         private ParameterListSyntax GetParameterList()
             => ParameterList(SeparatedList(
-                Parameters.Where(x => !x.HasStaticValue)
+                Parameters.Where(x => !x.HasLiteralValue)
                           .Select(x => x.ToParameterSyntax())));
 
         public override string ToString() => Type.ToString();

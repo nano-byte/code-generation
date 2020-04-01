@@ -21,7 +21,7 @@ namespace NanoByte.CodeGeneration
         {
             var result = new CSharpConstructor(Identifier);
             if (BaseClass != null)
-                result.Parameters.AddRange(BaseClass.Parameters.Where(x => !x.HasStaticValue));
+                result.Parameters.AddRange(BaseClass.Parameters.Where(x => !x.HasLiteralValue));
             return result;
         }
 

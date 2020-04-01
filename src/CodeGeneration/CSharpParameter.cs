@@ -18,7 +18,7 @@ namespace NanoByte.CodeGeneration
 
         public object? Value { get; set; }
 
-        public bool HasStaticValue
+        internal bool HasLiteralValue
             => Value != null && !(Value is ThisReference);
 
         public CSharpParameter(CSharpIdentifier type, string name)
