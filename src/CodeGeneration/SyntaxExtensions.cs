@@ -10,8 +10,14 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
+    /// <summary>
+    /// Extension methods for <see cref="SyntaxNode"/>s.
+    /// </summary>
     internal static class SyntaxExtensions
     {
+        /// <summary>
+        /// Returns a copy of the Roslyn <paramref name="node"/> with an XML documentation comment containing the <paramref name="summary"/> added.
+        /// </summary>
         internal static TSyntax WithDocumentation<TSyntax>(this TSyntax node, string? summary)
             where TSyntax : SyntaxNode
         {
@@ -35,6 +41,9 @@ namespace NanoByte.CodeGeneration
                 })))));
         }
 
+        /// <summary>
+        /// Converts a <paramref name="value"/> to a Roslyn literal expression.
+        /// </summary>
         internal static LiteralExpressionSyntax ToLiteralSyntax(this object value)
             => value switch
             {

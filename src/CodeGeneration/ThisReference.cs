@@ -8,6 +8,8 @@ namespace NanoByte.CodeGeneration
     /// </summary>
     public class ThisReference
     {
-        public override string ToString() => "this";
+        /// <inheritdoc/>
+        public override string ToString()
+            => "this";
     }
 }

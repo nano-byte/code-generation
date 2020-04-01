@@ -10,26 +10,55 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
+    /// <summary>
+    /// A property on a <see cref="CSharpInterface"/> or <see cref="CSharpClass"/>.
+    /// </summary>
     public class CSharpProperty
     {
+        /// <summary>
+        /// The type of the property.
+        /// </summary>
         public CSharpIdentifier Type { get; }
 
+        /// <summary>
+        /// The name of the property.
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// Creates a new property.
+        /// </summary>
+        /// <param name="type">The type of the property.</param>
+        /// <param name="name">The name of the property.</param>
         public CSharpProperty(CSharpIdentifier type, string name)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
+        /// <summary>
+        /// A summary used for an XML documentation comment.
+        /// </summary>
         public string? Summary { get; set; }
 
+        /// <summary>
+        /// Attributes to apply to the property.
+        /// </summary>
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
+        /// <summary>
+        /// An expression body for the property's setter.
+        /// </summary>
         public CSharpConstructor? GetterExpression { get; set; }
 
+        /// <summary>
+        /// Indicates whether the property has a setter.
+        /// </summary>
         public bool HasSetter { get; set; }
 
+        /// <summary>
+        /// Returns a list of all namespaces referenced/used in this property.
+        /// </summary>
         internal IEnumerable<string> GetNamespaces()
         {
             foreach (string? ns in Attributes.Select(x => x.Identifier.Namespace))
@@ -48,6 +77,9 @@ namespace NanoByte.CodeGeneration
             }
         }
 
+        /// <summary>
+        /// Returns a Roslyn syntax for the property.
+        /// </summary>
         internal PropertyDeclarationSyntax ToSyntax()
         {
             var propertyDeclaration =
@@ -69,6 +101,10 @@ namespace NanoByte.CodeGeneration
             if (HasSetter) yield return Declaration(SyntaxKind.SetAccessorDeclaration);
         }
 
-        public override string ToString() => Name;
+        /// <summary>
+        /// Returns the name of the property.
+        /// </summary>
+        public override string ToString()
+            => Name;
     }
 }

@@ -9,7 +9,7 @@ You can then generate a class like this:
 ```csharp
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 {
-    Description = "My class\nDetails",
+    Description = "My class",
     Properties =
     {
         new CSharpProperty(CSharpIdentifier.String, "MyProperty")
@@ -21,6 +21,8 @@ var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 };
 myClass.WriteToFile("MyClass.cs");
 ```
+
+Take a look at the documentation for \ref NanoByte.CodeGeneration.CSharpClass "CSharpClass" and \ref NanoByte.CodeGeneration.CSharpInterface "CSharpInterface" to discover more features.
 
 ## Building and contributing
 

@@ -14,7 +14,7 @@ You can then generate a class like this:
 ```csharp
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 {
-    Description = "My class\nDetails",
+    Description = "My class",
     Properties =
     {
         new CSharpProperty(CSharpIdentifier.String, "MyProperty")

@@ -11,19 +11,34 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration
 {
+    /// <summary>
+    /// Describes a C# type for which code can be generated.
+    /// </summary>
     public abstract class CSharpType : ICSharpType
     {
+        /// <inheritdoc/>
         public CSharpIdentifier Identifier { get; }
 
+        /// <summary>
+        /// Creates a new C# type.
+        /// </summary>
+        /// <param name="identifier">The fully qualified name of the type.</param>
         protected CSharpType(CSharpIdentifier identifier)
         {
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
         }
 
+        /// <summary>
+        /// A summary used for an XML documentation comment.
+        /// </summary>
         public string? Summary { get; set; }
 
+        /// <summary>
+        /// Attributes to apply to the type.
+        /// </summary>
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
+        /// <inheritdoc/>
         public CompilationUnitSyntax ToSyntax()
         {
             var namespaces = GetNamespaces();
@@ -41,6 +56,9 @@ namespace NanoByte.CodeGeneration
                   .NormalizeWhitespace();
         }
 
+        /// <summary>
+        /// Returns a list of all namespaces referenced/used in this type.
+        /// </summary>
         protected virtual ISet<string> GetNamespaces()
         {
             var namespaces = new SortedSet<string>();
@@ -54,8 +72,15 @@ namespace NanoByte.CodeGeneration
             return namespaces;
         }
 
+        /// <summary>
+        /// Returns a Roslyn syntax for the type.
+        /// </summary>
         protected abstract MemberDeclarationSyntax GetMemberDeclaration();
 
-        public override string ToString() => Identifier.ToString();
+        /// <summary>
+        /// Returns the name of the type.
+        /// </summary>
+        public override string ToString()
+            => Identifier.ToString();
     }
 }
