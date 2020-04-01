@@ -13,8 +13,12 @@ namespace NanoByte.CodeGeneration
             {
                 TypeArguments = {new CSharpIdentifier(ns: "Models", name: "MyModel")}
             };
+            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute"))
+            {
+                Arguments = {"myValue"},
+                NamedArguments = {("Extra", "extra")}
+            };
 
-            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute")) {Arguments = {"myValue"}};
             Assert(new CSharpInterface(myInterface)
             {
                 Summary = "My interface\nDetails",
@@ -39,13 +43,13 @@ namespace Namespace1
     /// My interface
     /// Details
     /// </summary>
-    [Dummy(""myValue"")]
+    [Dummy(""myValue"", Extra = ""extra"")]
     public partial interface MyInterface : BaseInterface
     {
         /// <summary>
         /// My property
         /// </summary>
-        [Dummy(""myValue"")]
+        [Dummy(""myValue"", Extra = ""extra"")]
         ICollectionEndpoint<MyModel> MyProperty
         {
             get;

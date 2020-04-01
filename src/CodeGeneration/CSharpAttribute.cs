@@ -20,18 +20,26 @@ namespace NanoByte.CodeGeneration
 
         public List<object> Arguments { get; } = new List<object>();
 
+        public List<(string name, object value)> NamedArguments { get; } = new List<(string name, object value)>();
+
         internal AttributeListSyntax ToSyntax()
         {
             var attribute = Attribute(IdentifierName(TrimAttributeSuffix(Identifier.Name)));
 
-            if (Arguments.Count != 0)
-            {
-                attribute = attribute
-                   .WithArgumentList(AttributeArgumentList(SeparatedList(Arguments.Select(value =>
-                        AttributeArgument(value.ToLiteralSyntax())))));
-            }
+            var arguments = GetArguments().ToList();
+            if (arguments.Count != 0)
+                attribute = attribute.WithArgumentList(AttributeArgumentList(SeparatedList(arguments)));
 
             return AttributeList(SingletonSeparatedList(attribute));
+        }
+
+        private IEnumerable<AttributeArgumentSyntax> GetArguments()
+        {
+            foreach (var value in Arguments)
+                yield return AttributeArgument(value.ToLiteralSyntax());
+
+            foreach ((string name, var value) in NamedArguments)
+                yield return AttributeArgument(value.ToLiteralSyntax()).WithNameEquals(NameEquals(name));
         }
 
         private static string TrimAttributeSuffix(string name)

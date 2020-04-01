@@ -13,8 +13,12 @@ namespace NanoByte.CodeGeneration
             var otherClass = new CSharpIdentifier(ns: "Namespace1", name: "OtherClass") {TypeArguments = {myModel}};
             var baseClass = new CSharpIdentifier(ns: "Namespace2", name: "BaseClass");
             var endpointInterface = new CSharpIdentifier("TypedRest.Endpoints", "IEndpoint");
+            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute"))
+            {
+                Arguments = {"myValue"},
+                NamedArguments = {("Extra", "extra")}
+            };
 
-            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute")) {Arguments = {"myValue"}};
             Assert(new CSharpClass(myClass)
             {
                 Summary = "My class\nDetails",
@@ -54,7 +58,7 @@ namespace Namespace1
     /// My class
     /// Details
     /// </summary>
-    [Dummy(""myValue"")]
+    [Dummy(""myValue"", Extra = ""extra"")]
     public partial class MyClass : BaseClass, MyInterface<MyModel>
     {
         public MyClass(IEndpoint referrer): base(referrer, relativeUri: ""./sample"")
@@ -64,7 +68,7 @@ namespace Namespace1
         /// <summary>
         /// My property
         /// </summary>
-        [Dummy(""myValue"")]
+        [Dummy(""myValue"", Extra = ""extra"")]
         public MyInterface<MyModel> MyProperty => new OtherClass<MyModel>(arg1: ""value"");
     }
 }");
