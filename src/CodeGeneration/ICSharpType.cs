@@ -1,4 +1,7 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿// Copyright Bastian Eicher
+// Licensed under the MIT License
+
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace NanoByte.CodeGeneration
 {

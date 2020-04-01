@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Copyright Bastian Eicher
+// Licensed under the MIT License
+
+using System;
+using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;

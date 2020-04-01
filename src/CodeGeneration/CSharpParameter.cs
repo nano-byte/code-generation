@@ -1,3 +1,6 @@
+// Copyright Bastian Eicher
+// Licensed under the MIT License
+
 using System;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;

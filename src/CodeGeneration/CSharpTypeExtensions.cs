@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿// Copyright Bastian Eicher
+// Licensed under the MIT License
+
+using System.IO;
 using System.Text;
 
 namespace NanoByte.CodeGeneration
