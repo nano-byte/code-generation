@@ -42,7 +42,8 @@ namespace NanoByte.CodeGeneration
                         {
                             Parameters =
                             {
-                                new CSharpParameter(CSharpIdentifier.String, "arg1") {Value = "value"}
+                                new CSharpParameter(myClass, "arg1") {Value = new ThisReference()},
+                                new CSharpParameter(CSharpIdentifier.String, "arg2") {Value = "value"}
                             }
                         }
                     }
@@ -69,7 +70,7 @@ namespace Namespace1
         /// My property
         /// </summary>
         [Dummy(""myValue"", Extra = ""extra"")]
-        public MyInterface<MyModel> MyProperty => new OtherClass<MyModel>(arg1: ""value"");
+        public MyInterface<MyModel> MyProperty => new OtherClass<MyModel>(this, arg2: ""value"");
     }
 }");
         }

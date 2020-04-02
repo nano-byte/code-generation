@@ -54,9 +54,9 @@ namespace NanoByte.CodeGeneration
         /// Returns a Roslyn syntax for setting a value for the parameter.
         /// </summary>
         internal ArgumentSyntax ToArgumentSyntax()
-            => (Value == null)
-            ? Argument(IdentifierName(Name))
-            : Argument(Value.ToLiteralSyntax()).WithNameColon(NameColon(IdentifierName(Name)));
+            => HasLiteralValue
+            ? Argument(Value!.ToLiteralSyntax()).WithNameColon(NameColon(IdentifierName(Name)))
+            : Argument(IdentifierName(Name));
 
         /// <summary>
         /// Returns the type, name and value of the parameter.
