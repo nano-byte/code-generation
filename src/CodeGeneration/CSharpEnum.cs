@@ -30,5 +30,16 @@ namespace NanoByte.CodeGeneration
         protected override MemberDeclarationSyntax GetMemberDeclaration()
             => EnumDeclaration(Identifier.Name)
                .WithMembers(SeparatedList(Values.Select(value => value.ToSyntax())));
+
+        /// <inheritdoc/>
+        protected override ISet<string> GetNamespaces()
+        {
+            var namespaces = base.GetNamespaces();
+
+            foreach (string ns in Values.SelectMany(x => x.GetNamespaces()))
+                namespaces.Add(ns);
+
+            return namespaces;
+        }
     }
 }

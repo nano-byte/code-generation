@@ -17,7 +17,6 @@ namespace NanoByte.CodeGeneration
             Assert(new CSharpEnum(myEnum)
             {
                 Summary = "My enum\nDetails",
-                Attributes = {dummyAttribute},
                 Values =
                 {
                     new CSharpEnumValue("Value1")
@@ -39,7 +38,6 @@ namespace Namespace1
     /// My enum
     /// Details
     /// </summary>
-    [Dummy(""myValue"", Extra = ""extra"")]
     public partial enum MyEnum
     {
         /// <summary>
