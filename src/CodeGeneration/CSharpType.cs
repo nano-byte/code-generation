@@ -28,14 +28,10 @@ namespace NanoByte.CodeGeneration
             Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
         }
 
-        /// <summary>
-        /// A summary used for an XML documentation comment.
-        /// </summary>
+        /// <inheritdoc/>
         public string? Summary { get; set; }
 
-        /// <summary>
-        /// Attributes to apply to the type.
-        /// </summary>
+        /// <inheritdoc/>
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
         /// <inheritdoc/>
