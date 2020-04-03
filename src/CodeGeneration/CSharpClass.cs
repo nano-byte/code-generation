@@ -72,8 +72,8 @@ namespace NanoByte.CodeGeneration
             if (BaseClass != null && BaseClass.Parameters.Count != 0)
                 yield return BaseClass.ToDeclarationSyntax(Identifier.Name);
 
-            foreach (var member in base.GetMemberDeclarations())
-                yield return member.WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)));
+            foreach (var member in Properties.Select(property => property.ToSyntax(makePublic: true)))
+                yield return member;
         }
     }
 }

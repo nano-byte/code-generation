@@ -80,12 +80,18 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// Returns a Roslyn syntax for the property.
         /// </summary>
-        internal PropertyDeclarationSyntax ToSyntax()
+        /// <param name="makePublic">Controls whether to make the property public or not.</param>
+        internal PropertyDeclarationSyntax ToSyntax(bool makePublic = false)
         {
             var propertyDeclaration =
-                PropertyDeclaration(Type.ToSyntax(), Identifier(Name))
-                   .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
-                   .WithDocumentation(Summary);
+                PropertyDeclaration(Type.ToSyntax(), Identifier(Name));
+
+            if (makePublic)
+                propertyDeclaration = propertyDeclaration.AddModifiers(Token(SyntaxKind.PublicKeyword));
+
+            propertyDeclaration = propertyDeclaration
+                                 .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
+                                 .WithDocumentation(Summary);
 
             return (GetterExpression == null)
                 ? propertyDeclaration.WithAccessorList(AccessorList(List(GetAccessors())))

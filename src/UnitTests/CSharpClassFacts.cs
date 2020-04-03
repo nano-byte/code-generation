@@ -37,7 +37,6 @@ namespace NanoByte.CodeGeneration
                     new CSharpProperty(myInterface, "MyProperty")
                     {
                         Summary = "My property",
-                        Attributes = {dummyAttribute},
                         GetterExpression = new CSharpConstructor(otherClass)
                         {
                             Parameters =
@@ -69,7 +68,6 @@ namespace Namespace1
         /// <summary>
         /// My property
         /// </summary>
-        [Dummy(""myValue"", Extra = ""extra"")]
         public MyInterface<MyModel> MyProperty => new OtherClass<MyModel>(this, arg2: ""value"");
     }
 }");
