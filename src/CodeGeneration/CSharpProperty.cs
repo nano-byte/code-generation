@@ -47,7 +47,7 @@ namespace NanoByte.CodeGeneration
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
         /// <summary>
-        /// An expression body for the property's setter.
+        /// An expression body for the property's getter.
         /// </summary>
         public CSharpConstructor? GetterExpression { get; set; }
 
