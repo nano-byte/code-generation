@@ -58,7 +58,7 @@ namespace NanoByte.CodeGeneration
         /// </summary>
         internal ConstructorDeclarationSyntax ToDeclarationSyntax(string typeName)
             => ConstructorDeclaration(Identifier(typeName))
-              .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
+              .AddModifiers(Token(SyntaxKind.PublicKeyword))
               .WithParameterList(GetParameterList())
               .WithInitializer(ConstructorInitializer(SyntaxKind.BaseConstructorInitializer, GetArgumentList(thisKeyword: false)))
               .WithBody(Block());
