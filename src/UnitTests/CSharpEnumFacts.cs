@@ -38,7 +38,7 @@ namespace Namespace1
     /// My enum
     /// Details
     /// </summary>
-    public partial enum MyEnum
+    public enum MyEnum
     {
         /// <summary>
         /// My value 1

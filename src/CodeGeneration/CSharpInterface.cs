@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -34,7 +35,9 @@ namespace NanoByte.CodeGeneration
         /// <inheritdoc/>
         protected override MemberDeclarationSyntax GetMemberDeclaration()
         {
-            var declaration = GetTypeDeclaration().WithMembers(List(GetMemberDeclarations()));
+            var declaration = GetTypeDeclaration()
+                             .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword))
+                             .WithMembers(List(GetMemberDeclarations()));
 
             var baseTypes = GetBaseTypes().ToList();
             return baseTypes.Any()

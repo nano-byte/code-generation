@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -29,6 +30,7 @@ namespace NanoByte.CodeGeneration
         /// <inheritdoc/>
         protected override MemberDeclarationSyntax GetMemberDeclaration()
             => EnumDeclaration(Identifier.Name)
+               .AddModifiers(Token(SyntaxKind.PublicKeyword))
                .WithMembers(SeparatedList(Values.Select(value => value.ToSyntax())));
 
         /// <inheritdoc/>

@@ -42,7 +42,6 @@ namespace NanoByte.CodeGeneration
                 namespaces.Remove(Identifier.Namespace);
 
             var member = GetMemberDeclaration()
-                        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword))
                         .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
                         .WithDocumentation(Summary);
 
