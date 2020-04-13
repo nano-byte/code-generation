@@ -47,6 +47,11 @@ namespace NanoByte.CodeGeneration
         public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
         /// <summary>
+        /// The property's initializer (sets default value).
+        /// </summary>
+        public CSharpConstructor? Initializer { get; set; }
+
+        /// <summary>
         /// An expression body for the property's getter.
         /// </summary>
         public CSharpConstructor? GetterExpression { get; set; }
@@ -61,14 +66,20 @@ namespace NanoByte.CodeGeneration
         /// </summary>
         internal IEnumerable<string> GetNamespaces()
         {
+            foreach (string ns in Type.GetNamespaces())
+                yield return ns;
+
             foreach (string? ns in Attributes.Select(x => x.Identifier.Namespace))
             {
                 if (ns != null)
                     yield return ns;
             }
 
-            foreach (string ns in Type.GetNamespaces())
-                yield return ns;
+            if (Initializer != null)
+            {
+                foreach (string ns in Initializer.GetNamespaces())
+                    yield return ns;
+            }
 
             if (GetterExpression != null)
             {
@@ -83,28 +94,41 @@ namespace NanoByte.CodeGeneration
         /// <param name="makePublic">Controls whether to make the property public or not.</param>
         internal PropertyDeclarationSyntax ToSyntax(bool makePublic = false)
         {
-            var propertyDeclaration =
-                PropertyDeclaration(Type.ToSyntax(), Identifier(Name));
+            var declaration = PropertyDeclaration(Type.ToSyntax(), Identifier(Name));
 
             if (makePublic)
-                propertyDeclaration = propertyDeclaration.AddModifiers(Token(SyntaxKind.PublicKeyword));
+                declaration = declaration.AddModifiers(Token(SyntaxKind.PublicKeyword));
 
-            propertyDeclaration = propertyDeclaration
-                                 .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
-                                 .WithDocumentation(Summary);
+            declaration = declaration.WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
+                                     .WithDocumentation(Summary);
 
-            return (GetterExpression == null)
-                ? propertyDeclaration.WithAccessorList(AccessorList(List(GetAccessors())))
-                : propertyDeclaration.WithExpressionBody(ArrowExpressionClause(GetterExpression.ToInvocationSyntax()))
-                                     .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
-        }
+            if (GetterExpression != null)
+            {
+                if (Initializer != null)
+                    throw new InvalidOperationException($"{nameof(GetterExpression)} and {nameof(Initializer)} may not be both set for the same {nameof(CSharpProperty)}.");
 
-        private IEnumerable<AccessorDeclarationSyntax> GetAccessors()
-        {
-            AccessorDeclarationSyntax Declaration(SyntaxKind kind) => AccessorDeclaration(kind).WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
+                if (HasSetter)
+                    throw new InvalidOperationException($"{nameof(GetterExpression)} and {nameof(HasSetter)} may not be both set for the same {nameof(CSharpProperty)}.");
 
-            yield return Declaration(SyntaxKind.GetAccessorDeclaration);
-            if (HasSetter) yield return Declaration(SyntaxKind.SetAccessorDeclaration);
+                declaration = declaration.WithExpressionBody(ArrowExpressionClause(GetterExpression.ToInvocationSyntax()))
+                                         .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
+            }
+            else
+            {
+                var accessors = new List<SyntaxKind> {SyntaxKind.GetAccessorDeclaration};
+                if (HasSetter) accessors.Add(SyntaxKind.SetAccessorDeclaration);
+
+                declaration = declaration.WithAccessorList(AccessorList(List(
+                    accessors.Select(x => AccessorDeclaration(x).WithSemicolonToken(Token(SyntaxKind.SemicolonToken))))));
+            }
+
+            if (Initializer != null)
+            {
+                declaration = declaration.WithInitializer(EqualsValueClause(Initializer.ToInvocationSyntax()))
+                                         .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
+            }
+
+            return declaration;
         }
 
         /// <summary>

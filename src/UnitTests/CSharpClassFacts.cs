@@ -45,6 +45,19 @@ namespace NanoByte.CodeGeneration
                                 new CSharpParameter(CSharpIdentifier.String, "arg2") {Value = "value"}
                             }
                         }
+                    },
+                    new CSharpProperty(myInterface, "MyOtherProperty")
+                    {
+                        Summary = "My other property",
+                        HasSetter = true,
+                        Initializer = new CSharpConstructor(otherClass)
+                        {
+                            Parameters =
+                            {
+                                new CSharpParameter(myClass, "arg1") {Value = new ThisReference()},
+                                new CSharpParameter(CSharpIdentifier.String, "arg2") {Value = "value"}
+                            }
+                        }
                     }
                 }
             }, @"using Attributes;
@@ -69,6 +82,16 @@ namespace Namespace1
         /// My property
         /// </summary>
         public MyInterface<MyModel> MyProperty => new OtherClass<MyModel>(this, arg2: ""value"");
+        /// <summary>
+        /// My other property
+        /// </summary>
+        public MyInterface<MyModel> MyOtherProperty
+        {
+            get;
+            set;
+        }
+
+        = new OtherClass<MyModel>(this, arg2: ""value"");
     }
 }");
         }
