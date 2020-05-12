@@ -1,4 +1,5 @@
 PROJECT_NAME = "NanoByte Code Generation"
+PROJECT_BRIEF = "Wrapper around Roslyn API to simplify generating C# code"
 
 INPUT = . ../src
 USE_MDFILE_AS_MAINPAGE = main.md

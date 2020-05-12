@@ -24,6 +24,4 @@ myClass.WriteToFile("MyClass.cs");
 
 Take a look at the documentation for \ref NanoByte.CodeGeneration.CSharpClass "CSharpClass" and \ref NanoByte.CodeGeneration.CSharpInterface "CSharpInterface" to discover more features.
 
-## Building and contributing
-
-See the [GitHub project](https://github.com/nano-byte/code-generation) for more information.
+[**GitHub repository**](https://github.com/nano-byte/code-generation)
