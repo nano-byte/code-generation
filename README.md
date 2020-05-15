@@ -31,9 +31,9 @@ Take a look at the [documentation](https://code-generation.nano-byte.net/) for m
 
 ## Building
 
-The source code is in [`src/`](src/), a project for API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`.
+The source code is in [`src/`](src/), config for building the API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`. The source code does not contain version numbers. Instead the version is determined during CI using [GitVersion](http://gitversion.readthedocs.io/).
 
-Run `.\build.ps1` on Windows or `./build.sh` on Linux. These scripts take a version number as an input argument. The source code itself contains only contains dummy version numbers. The actual version is picked by continuous integration using [GitVersion](http://gitversion.readthedocs.io/).
+To build [.NET Core SDK 3.1 or newer](https://www.microsoft.com/net/download) and run `.\build.ps1` or `./build.sh`.
 
 ## Contributing
 

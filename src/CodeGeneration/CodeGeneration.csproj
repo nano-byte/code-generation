@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Build config -->
   <PropertyGroup>
     <AssemblyName>NanoByte.CodeGeneration</AssemblyName>
     <RootNamespace>NanoByte.CodeGeneration</RootNamespace>
@@ -9,18 +10,18 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
     <Nullable>annotations</Nullable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <RunCodeAnalysis>False</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
     <OutputType>Library</OutputType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
-
   <PropertyGroup Condition="$(TargetFramework)=='netstandard2.1'">
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- NuGet package metadata -->
   <PropertyGroup>
     <Description>Thin wrapper around Roslyn API to simplify generating C# code.</Description>
     <Authors>Bastian Eicher</Authors>
@@ -30,16 +31,9 @@
     <RepositoryUrl>https://github.com/nano-byte/code-generation</RepositoryUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
+  <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.5.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 

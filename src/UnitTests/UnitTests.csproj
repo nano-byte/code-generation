@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Build config -->
   <PropertyGroup>
     <AssemblyName>NanoByte.CodeGeneration.UnitTests</AssemblyName>
     <RootNamespace>NanoByte.CodeGeneration</RootNamespace>
@@ -9,17 +10,14 @@
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\CodeGeneration\CodeGeneration.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
@@ -28,6 +26,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
 
+  <!-- Mark as unit test project -->
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
