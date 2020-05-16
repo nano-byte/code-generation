@@ -9,6 +9,7 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>
+    <DeterministicSourcePaths>False</DeterministicSourcePaths>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
