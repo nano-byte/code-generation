@@ -46,7 +46,7 @@ namespace NanoByte.CodeGeneration
 
             return CompilationUnit()
                   .WithUsings(List(namespaces.Select(x => UsingDirective(IdentifierName(x)))))
-                  .AddMembers(NamespaceDeclaration(IdentifierName(Identifier.Namespace)).AddMembers(member))
+                  .AddMembers((Identifier.Namespace == null) ? member : NamespaceDeclaration(IdentifierName(Identifier.Namespace)).AddMembers(member))
                   .NormalizeWhitespace();
         }
 

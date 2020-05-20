@@ -42,9 +42,13 @@ namespace NanoByte.CodeGeneration
         /// Returns a list of all namespaces referenced/used in this enum value.
         /// </summary>
         internal IEnumerable<string> GetNamespaces()
-            => from attribute in Attributes
-               where attribute.Identifier.Namespace != null
-               select attribute.Identifier.Namespace;
+        {
+            foreach (var attribute in Attributes)
+            {
+                if (attribute.Identifier.Namespace != null)
+                    yield return attribute.Identifier.Namespace;
+            }
+        }
 
         /// <summary>
         /// Returns a Roslyn syntax for the enum value.
