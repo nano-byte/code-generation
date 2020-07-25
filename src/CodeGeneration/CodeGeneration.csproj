@@ -29,6 +29,7 @@
     <Copyright>Copyright Bastian Eicher</Copyright>
     <PackageProjectUrl>https://code-generation.nano-byte.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>C#;Code Generation;CodeGen;Roslyn</PackageTags>
     <RepositoryUrl>https://github.com/nano-byte/code-generation</RepositoryUrl>
   </PropertyGroup>
 
