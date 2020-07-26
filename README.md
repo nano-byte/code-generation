@@ -7,9 +7,7 @@ A thin wrapper around the [Roslyn API](https://docs.microsoft.com/en-us/dotnet/c
 
 ## Usage
 
-Add a reference to the [NanoByte.CodeGeneration](https://www.nuget.org/packages/NanoByte.CodeGeneration/) NuGet package to your project. It is available for .NET Standard 2.0+.
-
-You can then generate a class like this:
+Add a reference to the [`NanoByte.CodeGeneration`](https://www.nuget.org/packages/NanoByte.CodeGeneration/) NuGet package to your project. You can then generate a class like this:
 
 ```csharp
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
