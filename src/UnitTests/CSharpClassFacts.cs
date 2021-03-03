@@ -85,13 +85,7 @@ namespace Namespace1
         /// <summary>
         /// My other property
         /// </summary>
-        public MyInterface<MyModel> MyOtherProperty
-        {
-            get;
-            set;
-        }
-
-        = new OtherClass<MyModel>(this, arg2: ""value"");
+        public MyInterface<MyModel> MyOtherProperty { get; set; } = new OtherClass<MyModel>(this, arg2: ""value"");
     }
 }");
         }

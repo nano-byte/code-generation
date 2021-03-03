@@ -50,10 +50,7 @@ namespace Namespace1
         /// My property
         /// </summary>
         [Dummy(""myValue"", Extra = ""extra"")]
-        ICollectionEndpoint<MyModel> MyProperty
-        {
-            get;
-        }
+        ICollectionEndpoint<MyModel> MyProperty { get; }
     }
 }");
         }
