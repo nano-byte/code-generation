@@ -8,7 +8,7 @@ Add a reference to the [NanoByte.CodeGeneration](https://www.nuget.org/packages/
 
 You can then generate a class like this:
 
-```csharp
+```{.cs}
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 {
     Description = "My class",
