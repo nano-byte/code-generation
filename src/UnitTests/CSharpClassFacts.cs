@@ -74,7 +74,7 @@ namespace Namespace1
     [Dummy(""myValue"", Extra = ""extra"")]
     public partial class MyClass : BaseClass, MyInterface<MyModel>
     {
-        public MyClass(IEndpoint referrer): base(referrer, relativeUri: ""./sample"")
+        public MyClass(IEndpoint referrer) : base(referrer, relativeUri: ""./sample"")
         {
         }
 
