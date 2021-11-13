@@ -1,5 +1,9 @@
 A thin wrapper around the [Roslyn API](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/) to simplify generating C# code.
 
+This can be used to implement things like code generators for Swagger/OpenAPI Spec, ORMs, etc. using a type-safe interface rather than simple string templating.
+
+While you can use the Rosyln API directly, its immutable and thread-safe design can make using it somewhat verbose and cumbersome. This library provides a simpler (but also less flexible) wrapper.
+
 [**GitHub repository**](https://github.com/nano-byte/code-generation)
 
 ## Usage
