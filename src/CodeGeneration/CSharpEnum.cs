@@ -7,41 +7,40 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-namespace NanoByte.CodeGeneration
+namespace NanoByte.CodeGeneration;
+
+/// <summary>
+/// Describes a C# enum for which code can be generated.
+/// </summary>
+public class CSharpEnum : CSharpType
 {
     /// <summary>
-    /// Describes a C# enum for which code can be generated.
+    /// Creates a new C# enum.
     /// </summary>
-    public class CSharpEnum : CSharpType
+    /// <param name="identifier">The fully qualified name of the enum.</param>
+    public CSharpEnum(CSharpIdentifier identifier)
+        : base(identifier)
+    {}
+
+    /// <summary>
+    /// A list of possible values for the enum.
+    /// </summary>
+    public List<CSharpEnumValue> Values { get; } = new();
+
+    /// <inheritdoc/>
+    protected override MemberDeclarationSyntax GetMemberDeclaration()
+        => EnumDeclaration(Identifier.Name)
+          .AddModifiers(Token(SyntaxKind.PublicKeyword))
+          .WithMembers(SeparatedList(Values.Select(value => value.ToSyntax())));
+
+    /// <inheritdoc/>
+    protected override ISet<string> GetNamespaces()
     {
-        /// <summary>
-        /// Creates a new C# enum.
-        /// </summary>
-        /// <param name="identifier">The fully qualified name of the enum.</param>
-        public CSharpEnum(CSharpIdentifier identifier)
-            : base(identifier)
-        {}
+        var namespaces = base.GetNamespaces();
 
-        /// <summary>
-        /// A list of possible values for the enum.
-        /// </summary>
-        public List<CSharpEnumValue> Values { get; } = new();
+        foreach (string ns in Values.SelectMany(x => x.GetNamespaces()))
+            namespaces.Add(ns);
 
-        /// <inheritdoc/>
-        protected override MemberDeclarationSyntax GetMemberDeclaration()
-            => EnumDeclaration(Identifier.Name)
-               .AddModifiers(Token(SyntaxKind.PublicKeyword))
-               .WithMembers(SeparatedList(Values.Select(value => value.ToSyntax())));
-
-        /// <inheritdoc/>
-        protected override ISet<string> GetNamespaces()
-        {
-            var namespaces = base.GetNamespaces();
-
-            foreach (string ns in Values.SelectMany(x => x.GetNamespaces()))
-                namespaces.Add(ns);
-
-            return namespaces;
-        }
+        return namespaces;
     }
 }

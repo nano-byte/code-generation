@@ -1,36 +1,36 @@
 ﻿using Xunit;
 
-namespace NanoByte.CodeGeneration
-{
-    public class CSharpEnumFacts : CSharpTypeFactsBase
-    {
-        [Fact]
-        public void GeneratesCorrectCode()
-        {
-            var myEnum = new CSharpIdentifier(ns: "Namespace1", name: "MyEnum");
-            var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute"))
-            {
-                Arguments = {"myValue"},
-                NamedArguments = {("Extra", "extra")}
-            };
+namespace NanoByte.CodeGeneration;
 
-            Assert(new CSharpEnum(myEnum)
+public class CSharpEnumFacts : CSharpTypeFactsBase
+{
+    [Fact]
+    public void GeneratesCorrectCode()
+    {
+        var myEnum = new CSharpIdentifier(ns: "Namespace1", name: "MyEnum");
+        var dummyAttribute = new CSharpAttribute(new CSharpIdentifier("Attributes", "DummyAttribute"))
+        {
+            Arguments = {"myValue"},
+            NamedArguments = {("Extra", "extra")}
+        };
+
+        Assert(new CSharpEnum(myEnum)
+        {
+            Summary = "My enum\nDetails",
+            Values =
             {
-                Summary = "My enum\nDetails",
-                Values =
+                new CSharpEnumValue("Value1")
                 {
-                    new CSharpEnumValue("Value1")
-                    {
-                        Summary = "My value 1",
-                        Attributes = {dummyAttribute}
-                    },
-                    new CSharpEnumValue("Value2")
-                    {
-                        Summary = "My value 2",
-                        Attributes = {dummyAttribute}
-                    }
+                    Summary = "My value 1",
+                    Attributes = {dummyAttribute}
+                },
+                new CSharpEnumValue("Value2")
+                {
+                    Summary = "My value 2",
+                    Attributes = {dummyAttribute}
                 }
-            }, @"using Attributes;
+            }
+        }, @"using Attributes;
 
 namespace Namespace1
 {
@@ -52,6 +52,5 @@ namespace Namespace1
         Value2
     }
 }");
-        }
     }
 }
