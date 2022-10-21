@@ -4,7 +4,7 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.CodeGeneration.UnitTests</AssemblyName>
     <RootNamespace>NanoByte.CodeGeneration</RootNamespace>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>

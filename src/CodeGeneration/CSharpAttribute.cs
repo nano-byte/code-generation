@@ -31,12 +31,12 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// Arguments for the attribute.
         /// </summary>
-        public List<object> Arguments { get; } = new List<object>();
+        public List<object> Arguments { get; } = new();
 
         /// <summary>
         /// Named Arguments for the attribute.
         /// </summary>
-        public List<(string name, object value)> NamedArguments { get; } = new List<(string name, object value)>();
+        public List<(string name, object value)> NamedArguments { get; } = new();
 
         /// <summary>
         /// Returns a Roslyn syntax for the attribute.
