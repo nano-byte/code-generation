@@ -31,7 +31,7 @@ namespace NanoByte.CodeGeneration
         public string? Summary { get; set; }
 
         /// <inheritdoc/>
-        public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+        public List<CSharpAttribute> Attributes { get; } = new();
 
         /// <inheritdoc/>
         public CompilationUnitSyntax ToSyntax()

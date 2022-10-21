@@ -36,7 +36,7 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// Attributes to apply to the enum value.
         /// </summary>
-        public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+        public List<CSharpAttribute> Attributes { get; } = new();
 
         /// <summary>
         /// Returns a list of all namespaces referenced/used in this enum value.

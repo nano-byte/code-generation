@@ -25,12 +25,12 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// A list of interfaces this type implements.
         /// </summary>
-        public List<CSharpIdentifier> Interfaces { get; } = new List<CSharpIdentifier>();
+        public List<CSharpIdentifier> Interfaces { get; } = new();
 
         /// <summary>
         /// A list of properties this type exposes.
         /// </summary>
-        public List<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
+        public List<CSharpProperty> Properties { get; } = new();
 
         /// <inheritdoc/>
         protected override MemberDeclarationSyntax GetMemberDeclaration()

@@ -55,7 +55,7 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// Generic type arguments for the type.
         /// </summary>
-        public List<CSharpIdentifier> TypeArguments { get; } = new List<CSharpIdentifier>();
+        public List<CSharpIdentifier> TypeArguments { get; } = new();
 
         /// <summary>
         /// Returns a list of all namespaces referenced/used in this identifier.
@@ -86,7 +86,7 @@ namespace NanoByte.CodeGeneration
         /// Returns a copy of the identifier with <see cref="Nullable"/> set to <c>true</c>.
         /// </summary>
         public CSharpIdentifier ToNullable()
-            => new CSharpIdentifier(Namespace, Name, nullable: true);
+            => new(Namespace, Name, nullable: true);
 
         /// <summary>
         /// Returns a copy of the identifier with an <c>I</c> prepended to the <see cref="Name"/>.

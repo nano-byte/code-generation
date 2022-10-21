@@ -32,7 +32,7 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// The parameters for the constructor.
         /// </summary>
-        public List<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
+        public List<CSharpParameter> Parameters { get; } = new();
 
         /// <summary>
         /// Returns a list of all namespaces referenced/used in this constructor.

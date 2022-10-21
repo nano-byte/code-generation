@@ -44,7 +44,7 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// Attributes to apply to the property.
         /// </summary>
-        public List<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+        public List<CSharpAttribute> Attributes { get; } = new();
 
         /// <summary>
         /// The property's initializer (sets default value).

@@ -25,7 +25,7 @@ namespace NanoByte.CodeGeneration
         /// <summary>
         /// A list of possible values for the enum.
         /// </summary>
-        public List<CSharpEnumValue> Values { get; } = new List<CSharpEnumValue>();
+        public List<CSharpEnumValue> Values { get; } = new();
 
         /// <inheritdoc/>
         protected override MemberDeclarationSyntax GetMemberDeclaration()

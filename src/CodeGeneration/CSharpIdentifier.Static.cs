@@ -9,27 +9,25 @@ namespace NanoByte.CodeGeneration
 {
     public partial class CSharpIdentifier
     {
-        public static CSharpIdentifier Bool => new CSharpIdentifier("bool");
+        public static CSharpIdentifier Bool => new("bool");
 
-        public static CSharpIdentifier Int => new CSharpIdentifier("int");
+        public static CSharpIdentifier Int => new("int");
 
-        public static CSharpIdentifier Long => new CSharpIdentifier("long");
+        public static CSharpIdentifier Long => new("long");
 
-        public static CSharpIdentifier Float => new CSharpIdentifier("float");
+        public static CSharpIdentifier Float => new("float");
 
-        public static CSharpIdentifier Double => new CSharpIdentifier("double");
+        public static CSharpIdentifier Double => new("double");
 
-        public static CSharpIdentifier String => new CSharpIdentifier("string");
+        public static CSharpIdentifier String => new("string");
 
-        public static CSharpIdentifier Object => new CSharpIdentifier("object");
+        public static CSharpIdentifier Object => new("object");
 
-        public static CSharpIdentifier Uri => new CSharpIdentifier("System", "Uri");
+        public static CSharpIdentifier Uri => new("System", "Uri");
 
-        public static CSharpIdentifier ListOf(CSharpIdentifier type)
-            => new CSharpIdentifier("System.Collections.Generic", "List") {TypeArguments = {type}};
+        public static CSharpIdentifier ListOf(CSharpIdentifier type) => new("System.Collections.Generic", "List") {TypeArguments = {type}};
 
-        public static CSharpIdentifier DictionaryOf(CSharpIdentifier keyType, CSharpIdentifier valueType)
-            => new CSharpIdentifier("System.Collections.Generic", "Dictionary") {TypeArguments = {keyType, valueType}};
+        public static CSharpIdentifier DictionaryOf(CSharpIdentifier keyType, CSharpIdentifier valueType) => new("System.Collections.Generic", "Dictionary") {TypeArguments = {keyType, valueType}};
 
         private static TypeSyntax? GetPredefinedType(string name)
             => name switch
