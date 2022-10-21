@@ -5,6 +5,7 @@
     <AssemblyName>NanoByte.CodeGeneration</AssemblyName>
     <RootNamespace>NanoByte.CodeGeneration</RootNamespace>
     <LangVersion>10.0</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -37,6 +38,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- Global usings -->
+  <ItemGroup>
+    <Using Include="Microsoft.CodeAnalysis" />
+    <Using Include="Microsoft.CodeAnalysis.CSharp" />
+    <Using Include="Microsoft.CodeAnalysis.CSharp.Syntax" />
   </ItemGroup>
 
 </Project>

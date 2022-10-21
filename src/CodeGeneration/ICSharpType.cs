@@ -1,9 +1,6 @@
 ﻿// Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System.Collections.Generic;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-
 namespace NanoByte.CodeGeneration;
 
 /// <summary>

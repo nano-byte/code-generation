@@ -1,8 +1,6 @@
 ﻿// Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace NanoByte.CodeGeneration;

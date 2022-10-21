@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace NanoByte.CodeGeneration;
+﻿namespace NanoByte.CodeGeneration;
 
 public class CSharpEnumFacts : CSharpTypeFactsBase
 {

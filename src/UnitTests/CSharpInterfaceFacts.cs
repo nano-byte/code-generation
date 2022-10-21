@@ -1,5 +1,3 @@
-using Xunit;
-
 namespace NanoByte.CodeGeneration;
 
 public class CSharpInterfaceFacts : CSharpTypeFactsBase
