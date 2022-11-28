@@ -32,7 +32,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>C#;Code Generation;CodeGen;Roslyn</PackageTags>
     <RepositoryUrl>https://github.com/nano-byte/code-generation</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <!-- Dependencies -->
   <ItemGroup>
