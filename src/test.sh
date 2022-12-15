@@ -10,4 +10,4 @@ else
 fi
 
 # Unit tests
-$dotnet test --no-build --logger junit --configuration Release UnitTests/UnitTests.csproj
+$dotnet test --no-build --logger trx --configuration Release UnitTests/UnitTests.csproj
