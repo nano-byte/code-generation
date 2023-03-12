@@ -9,7 +9,7 @@
       "automergeType": "branch"
     },
     {
-      "matchPackagePatterns": ["SourceLink", "CodeAnalysis"],
+      "matchPackagePatterns": ["gittools", "SourceLink", "CodeAnalysis"],
       "automerge": true,
       "automergeType": "branch"
     }
