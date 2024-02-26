@@ -8,21 +8,13 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// An attribute on a <see cref="CSharpInterface"/>, <see cref="CSharpClass"/> or <see cref="CSharpProperty"/>.
 /// </summary>
-public class CSharpAttribute
+/// <param name="identifier">The type of the attribute.</param>
+public class CSharpAttribute(CSharpIdentifier identifier)
 {
     /// <summary>
     /// The type of the attribute.
     /// </summary>
-    public CSharpIdentifier Identifier { get; }
-
-    /// <summary>
-    /// Creates a new attribute.
-    /// </summary>
-    /// <param name="identifier">The type of the attribute.</param>
-    public CSharpAttribute(CSharpIdentifier identifier)
-    {
-        Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-    }
+    public CSharpIdentifier Identifier { get; } = identifier ?? throw new ArgumentNullException(nameof(identifier));
 
     /// <summary>
     /// Arguments for the attribute.

@@ -8,19 +8,11 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// Describes a C# type for which code can be generated.
 /// </summary>
-public abstract class CSharpType : ICSharpType
+/// <param name="identifier">The fully qualified name of the type.</param>
+public abstract class CSharpType(CSharpIdentifier identifier) : ICSharpType
 {
     /// <inheritdoc/>
-    public CSharpIdentifier Identifier { get; }
-
-    /// <summary>
-    /// Creates a new C# type.
-    /// </summary>
-    /// <param name="identifier">The fully qualified name of the type.</param>
-    protected CSharpType(CSharpIdentifier identifier)
-    {
-        Identifier = identifier ?? throw new ArgumentNullException(nameof(identifier));
-    }
+    public CSharpIdentifier Identifier { get; } = identifier ?? throw new ArgumentNullException(nameof(identifier));
 
     /// <inheritdoc/>
     public string? Summary { get; set; }

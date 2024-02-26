@@ -8,28 +8,19 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// A property on a <see cref="CSharpInterface"/> or <see cref="CSharpClass"/>.
 /// </summary>
-public class CSharpProperty
+/// <param name="type">The type of the property.</param>
+/// <param name="name">The name of the property.</param>
+public class CSharpProperty(CSharpIdentifier type, string name)
 {
     /// <summary>
     /// The type of the property.
     /// </summary>
-    public CSharpIdentifier Type { get; }
+    public CSharpIdentifier Type { get; } = type ?? throw new ArgumentNullException(nameof(type));
 
     /// <summary>
     /// The name of the property.
     /// </summary>
-    public string Name { get; }
-
-    /// <summary>
-    /// Creates a new property.
-    /// </summary>
-    /// <param name="type">The type of the property.</param>
-    /// <param name="name">The name of the property.</param>
-    public CSharpProperty(CSharpIdentifier type, string name)
-    {
-        Type = type ?? throw new ArgumentNullException(nameof(type));
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-    }
+    public string Name { get; } = name ?? throw new ArgumentNullException(nameof(name));
 
     /// <summary>
     /// A summary used for an XML documentation comment.

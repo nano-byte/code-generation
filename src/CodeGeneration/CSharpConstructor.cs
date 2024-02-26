@@ -8,21 +8,13 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// A constructor for a <see cref="CSharpClass"/>.
 /// </summary>
-public class CSharpConstructor
+/// <param name="type">The fully qualified name of the class that the constructor instantiates.</param>
+public class CSharpConstructor(CSharpIdentifier type)
 {
     /// <summary>
     /// The fully qualified name of the class that the constructor instantiates.
     /// </summary>
-    public CSharpIdentifier Type { get; }
-
-    /// <summary>
-    /// Creates a new constructor.
-    /// </summary>
-    /// <param name="type">The fully qualified name of the class that the constructor instantiates.</param>
-    public CSharpConstructor(CSharpIdentifier type)
-    {
-        Type = type ?? throw new ArgumentNullException(nameof(type));
-    }
+    public CSharpIdentifier Type { get; } = type ?? throw new ArgumentNullException(nameof(type));
 
     /// <summary>
     /// The parameters for the constructor.

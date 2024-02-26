@@ -8,21 +8,13 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// A possible value for a <see cref="CSharpEnum"/>.
 /// </summary>
-public class CSharpEnumValue
+/// <param name="name">The name of the enum value.</param>
+public class CSharpEnumValue(string name)
 {
     /// <summary>
     /// The name of the enum value.
     /// </summary>
-    public string Name { get; }
-
-    /// <summary>
-    /// Creates a new enum value.
-    /// </summary>
-    /// <param name="name">The name of the enum value.</param>
-    public CSharpEnumValue(string name)
-    {
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-    }
+    public string Name { get; } = name ?? throw new ArgumentNullException(nameof(name));
 
     /// <summary>
     /// A summary used for an XML documentation comment.

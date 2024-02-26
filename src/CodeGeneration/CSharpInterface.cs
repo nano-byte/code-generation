@@ -8,16 +8,9 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// Describes a C# interface for which code can be generated.
 /// </summary>
-public class CSharpInterface : CSharpType
+/// <param name="identifier">The fully qualified name of the interface.</param>
+public class CSharpInterface(CSharpIdentifier identifier) : CSharpType(identifier)
 {
-    /// <summary>
-    /// Creates a new C# interface.
-    /// </summary>
-    /// <param name="identifier">The fully qualified name of the interface.</param>
-    public CSharpInterface(CSharpIdentifier identifier)
-        : base(identifier)
-    {}
-
     /// <summary>
     /// A list of interfaces this type implements.
     /// </summary>

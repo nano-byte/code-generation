@@ -8,16 +8,9 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// Describes a C# enum for which code can be generated.
 /// </summary>
-public class CSharpEnum : CSharpType
+/// <param name="identifier">The fully qualified name of the enum.</param>
+public class CSharpEnum(CSharpIdentifier identifier) : CSharpType(identifier)
 {
-    /// <summary>
-    /// Creates a new C# enum.
-    /// </summary>
-    /// <param name="identifier">The fully qualified name of the enum.</param>
-    public CSharpEnum(CSharpIdentifier identifier)
-        : base(identifier)
-    {}
-
     /// <summary>
     /// A list of possible values for the enum.
     /// </summary>

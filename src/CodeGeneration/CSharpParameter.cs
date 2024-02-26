@@ -8,17 +8,19 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// A parameter for a <see cref="CSharpConstructor"/>.
 /// </summary>
-public class CSharpParameter
+/// <param name="type">The type of the parameter.</param>
+/// <param name="name">The name of the parameter.</param>
+public class CSharpParameter(CSharpIdentifier type, string name)
 {
     /// <summary>
     /// The type of the parameter.
     /// </summary>
-    public CSharpIdentifier Type { get; }
+    public CSharpIdentifier Type { get; } = type ?? throw new ArgumentNullException(nameof(type));
 
     /// <summary>
     /// The name of the parameter.
     /// </summary>
-    public string Name { get; }
+    public string Name { get; } = name ?? throw new ArgumentNullException(nameof(name));
 
     /// <summary>
     /// The value to set for this parameter when invoking it. Passes through a argument of the same name when not set.
@@ -30,17 +32,6 @@ public class CSharpParameter
     /// </summary>
     internal bool HasLiteralValue
         => Value != null && !(Value is ThisReference);
-
-    /// <summary>
-    /// Creates a new constructor parameter.
-    /// </summary>
-    /// <param name="type">The type of the parameter.</param>
-    /// <param name="name">The name of the parameter.</param>
-    public CSharpParameter(CSharpIdentifier type, string name)
-    {
-        Type = type ?? throw new ArgumentNullException(nameof(type));
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-    }
 
     /// <summary>
     /// Returns a Roslyn syntax for declaring the parameter.

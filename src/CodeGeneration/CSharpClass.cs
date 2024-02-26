@@ -8,16 +8,9 @@ namespace NanoByte.CodeGeneration;
 /// <summary>
 /// Describes a C# class for which code can be generated.
 /// </summary>
-public class CSharpClass : CSharpInterface
+/// <param name="identifier">The fully qualified name of the class.</param>
+public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifier)
 {
-    /// <summary>
-    /// Creates a new C# class.
-    /// </summary>
-    /// <param name="identifier">The fully qualified name of the class.</param>
-    public CSharpClass(CSharpIdentifier identifier)
-        : base(identifier)
-    {}
-
     /// <summary>
     /// The base class of this class; <c>null</c> if none.
     /// </summary>
