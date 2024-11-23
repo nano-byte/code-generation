@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Home | NanoByte Code Generation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Home | NanoByte Code Generation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/code-generation/blob/0.4.2/doc/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="nanobyte-code-generation">NanoByte Code Generation</h1>
+
+<p>A thin wrapper around the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/">Roslyn API</a> to simplify generating C# code.</p>
+<p>This can be used to implement things like code generators for Swagger/OpenAPI Spec, ORMs, etc. using a type-safe interface rather than simple string templating.</p>
+<p>While you can use the Rosyln API directly, its immutable and thread-safe design can make using it somewhat verbose and cumbersome. This library provides a simpler (but also less flexible) wrapper.</p>
+<h2 id="usage">Usage</h2>
+<p>Add a reference to the <a href="https://www.nuget.org/packages/NanoByte.CodeGeneration/">NanoByte.CodeGeneration</a> NuGet package to your project. It is available for .NET Standard 2.0+.</p>
+<p>You can then generate a class like this:</p>
+<pre><code class="lang-csharp">var myClass = new CSharpClass(new CSharpIdentifier(&quot;MyNamespace&quot;, &quot;MyClass&quot;))
+{
+    Description = &quot;My class&quot;,
+    Properties =
+    {
+        new CSharpProperty(CSharpIdentifier.String, &quot;MyProperty&quot;)
+        {
+            Description = &quot;My property&quot;,
+            HasSetter = true
+        }
+    }
+};
+myClass.WriteToFile(&quot;MyClass.cs&quot;);
+</code></pre>
+<p>Take a look at the documentation for <a class="xref" href="api/NanoByte.CodeGeneration.CSharpClass.html">CSharpClass</a> and <a class="xref" href="api/NanoByte.CodeGeneration.CSharpInterface.html">CSharpInterface</a> to discover more features.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/code-generation/blob/0.4.2/doc/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

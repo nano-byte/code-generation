@@ -1,0 +1,195 @@
+{
+  "source_base_path": "/home/runner/work/code-generation/code-generation/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpClass.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpConstructor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpConstructor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpEnum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpEnumValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpEnumValue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpIdentifier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpInterface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpInterface.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpParameter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpProperty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpProperty.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpTypeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpTypeExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.ICSharpType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.ICSharpType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.ThisReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.ThisReference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
