@@ -6,7 +6,7 @@
     <RootNamespace>NanoByte.CodeGeneration</RootNamespace>
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>
