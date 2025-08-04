@@ -1,6 +1,6 @@
 # NanoByte Code Generation
 
-[![Build](https://github.com/nano-byte/code-generation/workflows/Build/badge.svg?branch=master)](https://github.com/nano-byte/code-generation/actions?query=workflow%3ABuild)
+[![Build](https://github.com/nano-byte/code-generation/actions/workflows/build.yml/badge.svg)](https://github.com/nano-byte/code-generation/actions/workflows/build.yml)
 [![NuGet](https://img.shields.io/nuget/v/NanoByte.CodeGeneration.svg)](https://www.nuget.org/packages/NanoByte.CodeGeneration/)
 [![API documentation](https://img.shields.io/badge/api-docs-orange.svg)](https://code-generation.nano-byte.net/)  
 A thin wrapper around the [Roslyn API](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/) to simplify generating C# code.
