@@ -1,0 +1,251 @@
+{
+  "source_base_path": "/home/runner/work/code-generation/code-generation/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpAttribute",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpAttribute.yml\" sourcestartlinenumber=\"1\">An attribute on a <xref href=\"NanoByte.CodeGeneration.CSharpInterface\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"NanoByte.CodeGeneration.CSharpClass\" data-throw-if-not-resolved=\"false\"></xref> or <xref href=\"NanoByte.CodeGeneration.CSharpProperty\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpClass.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpClass",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpClass.yml\" sourcestartlinenumber=\"1\">Describes a C# class for which code can be generated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpConstructor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpConstructor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpConstructor",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpConstructor.yml\" sourcestartlinenumber=\"1\">A constructor for a <xref href=\"NanoByte.CodeGeneration.CSharpClass\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpEnum",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpEnum.yml\" sourcestartlinenumber=\"1\">Describes a C# enum for which code can be generated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpEnumValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpEnumValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpEnumValue",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpEnumValue.yml\" sourcestartlinenumber=\"1\">A possible value for a <xref href=\"NanoByte.CodeGeneration.CSharpEnum\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpIdentifier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpIdentifier",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpIdentifier.yml\" sourcestartlinenumber=\"1\">The fully qualified name of a type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpInterface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpInterface.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpInterface",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpInterface.yml\" sourcestartlinenumber=\"1\">Describes a C# interface for which code can be generated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpParameter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpParameter",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpParameter.yml\" sourcestartlinenumber=\"1\">A parameter for a <xref href=\"NanoByte.CodeGeneration.CSharpConstructor\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpProperty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpProperty.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpProperty",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpProperty.yml\" sourcestartlinenumber=\"1\">A property on a <xref href=\"NanoByte.CodeGeneration.CSharpInterface\" data-throw-if-not-resolved=\"false\"></xref> or <xref href=\"NanoByte.CodeGeneration.CSharpClass\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpType",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpType.yml\" sourcestartlinenumber=\"1\">Describes a C# type for which code can be generated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.CSharpTypeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.CSharpTypeExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.CSharpTypeExtensions",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.CSharpTypeExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods for <xref href=\"NanoByte.CodeGeneration.ICSharpType\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.ICSharpType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.ICSharpType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.ICSharpType",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.ICSharpType.yml\" sourcestartlinenumber=\"1\">Describes a C# type for which code can be generated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.ThisReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.ThisReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration.ThisReference",
+      "Summary": "<p sourcefile=\"api/NanoByte.CodeGeneration.ThisReference.yml\" sourcestartlinenumber=\"1\">&quot;Magic&quot; value for <xref href=\"NanoByte.CodeGeneration.CSharpParameter.Value\" data-throw-if-not-resolved=\"false\"></xref> indicating that the &quot;this&quot; keyword should be inserted.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.CodeGeneration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.CodeGeneration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.CodeGeneration",
+      "Summary": "\n<p sourcefile=\"../src/CodeGeneration/_Namespace.md\" sourcestartlinenumber=\"5\">Thin wrapper around Roslyn API to simplify generating C# code.</p>\n"
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
