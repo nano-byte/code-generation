@@ -1,5 +1,4 @@
 ---
 uid: NanoByte.CodeGeneration
-summary: *content
+summary: Thin wrapper around Roslyn API to simplify generating C# code.
 ---
-Thin wrapper around Roslyn API to simplify generating C# code.
