@@ -6,7 +6,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 namespace NanoByte.CodeGeneration;
 
 /// <summary>
-/// A parameter for a <see cref="CSharpConstructor"/>.
+/// A parameter for a <see cref="CSharpObjectCreation"/>.
 /// </summary>
 /// <param name="type">The type of the parameter.</param>
 /// <param name="name">The name of the parameter.</param>

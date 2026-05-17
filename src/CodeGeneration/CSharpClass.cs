@@ -12,18 +12,18 @@ namespace NanoByte.CodeGeneration;
 public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifier)
 {
     /// <summary>
-    /// The base class of this class; <c>null</c> if none.
+    /// The base constructor invocation for this class; <c>null</c> if there is no base class.
     /// </summary>
-    public CSharpConstructor? BaseClass { get; set; }
+    public CSharpObjectCreation? BaseConstructor { get; set; }
 
     /// <summary>
-    /// Returns a constructor for instantiating this class.
+    /// Returns an object creation expression for instantiating this class.
     /// </summary>
-    public CSharpConstructor GetConstruction()
+    public CSharpObjectCreation ToObjectCreation()
     {
-        var result = new CSharpConstructor(Identifier);
-        if (BaseClass != null)
-            result.Parameters.AddRange(BaseClass.Parameters.Where(x => !x.HasLiteralValue));
+        var result = new CSharpObjectCreation(Identifier);
+        if (BaseConstructor != null)
+            result.Parameters.AddRange(BaseConstructor.Parameters.Where(x => !x.HasLiteralValue));
         return result;
     }
 
@@ -32,9 +32,9 @@ public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifi
     {
         var namespaces = base.GetNamespaces();
 
-        if (BaseClass != null)
+        if (BaseConstructor != null)
         {
-            foreach (string ns in BaseClass.GetNamespaces())
+            foreach (string ns in BaseConstructor.GetNamespaces())
                 namespaces.Add(ns);
         }
 
@@ -48,8 +48,8 @@ public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifi
     /// <inheritdoc/>
     protected override IEnumerable<BaseTypeSyntax> GetBaseTypes()
     {
-        if (BaseClass != null)
-            yield return SimpleBaseType(BaseClass.Type.ToSyntax());
+        if (BaseConstructor != null)
+            yield return SimpleBaseType(BaseConstructor.Type.ToSyntax());
 
         foreach (var type in base.GetBaseTypes())
             yield return type;
@@ -58,8 +58,8 @@ public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifi
     /// <inheritdoc/>
     protected override IEnumerable<MemberDeclarationSyntax> GetMemberDeclarations()
     {
-        if (BaseClass != null && BaseClass.Parameters.Count != 0)
-            yield return BaseClass.ToDeclarationSyntax(Identifier.Name);
+        if (BaseConstructor != null && BaseConstructor.Parameters.Count != 0)
+            yield return BaseConstructor.ToDeclarationSyntax(Identifier.Name);
 
         foreach (var member in Properties.Select(property => property.ToSyntax(makePublic: true)))
             yield return member;

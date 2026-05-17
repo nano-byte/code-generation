@@ -6,23 +6,23 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 namespace NanoByte.CodeGeneration;
 
 /// <summary>
-/// A constructor for a <see cref="CSharpClass"/>.
+/// An object creation expression (a <c>new T(args)</c> call) describing how to instantiate a type.
 /// </summary>
-/// <param name="type">The fully qualified name of the class that the constructor instantiates.</param>
-public class CSharpConstructor(CSharpIdentifier type)
+/// <param name="type">The fully qualified name of the type to instantiate.</param>
+public class CSharpObjectCreation(CSharpIdentifier type)
 {
     /// <summary>
-    /// The fully qualified name of the class that the constructor instantiates.
+    /// The fully qualified name of the type to instantiate.
     /// </summary>
     public CSharpIdentifier Type { get; } = type ?? throw new ArgumentNullException(nameof(type));
 
     /// <summary>
-    /// The parameters for the constructor.
+    /// The arguments to pass to the constructor.
     /// </summary>
     public List<CSharpParameter> Parameters { get; } = new();
 
     /// <summary>
-    /// Returns a list of all namespaces referenced/used in this constructor.
+    /// Returns a list of all namespaces referenced/used in this object creation.
     /// </summary>
     internal IEnumerable<string> GetNamespaces()
     {
@@ -41,7 +41,7 @@ public class CSharpConstructor(CSharpIdentifier type)
            .WithArgumentList(GetArgumentList(thisKeyword: true));
 
     /// <summary>
-    /// Returns a Roslyn syntax for declaring the constructor.
+    /// Returns a Roslyn syntax for a constructor declaration that forwards these parameters to a base constructor call.
     /// </summary>
     internal ConstructorDeclarationSyntax ToDeclarationSyntax(string typeName)
         => ConstructorDeclaration(Identifier(typeName))
@@ -62,7 +62,7 @@ public class CSharpConstructor(CSharpIdentifier type)
                       .Select(x => x.ToParameterSyntax())));
 
     /// <summary>
-    /// Returns the name of the class that the constructor instantiates.
+    /// Returns the name of the type being instantiated.
     /// </summary>
     public override string ToString()
         => Type.ToString();

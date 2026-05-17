@@ -21,7 +21,7 @@ public class CSharpClassFacts : CSharpTypeFactsBase
         {
             Summary = "My class\nDetails",
             Attributes = {dummyAttribute},
-            BaseClass = new CSharpConstructor(baseClass)
+            BaseConstructor = new CSharpObjectCreation(baseClass)
             {
                 Parameters =
                 {
@@ -35,7 +35,7 @@ public class CSharpClassFacts : CSharpTypeFactsBase
                 new CSharpProperty(myInterface, "MyProperty")
                 {
                     Summary = "My property",
-                    GetterExpression = new CSharpConstructor(otherClass)
+                    GetterExpression = new CSharpObjectCreation(otherClass)
                     {
                         Parameters =
                         {
@@ -48,7 +48,7 @@ public class CSharpClassFacts : CSharpTypeFactsBase
                 {
                     Summary = "My other property",
                     HasSetter = true,
-                    Initializer = new CSharpConstructor(otherClass)
+                    Initializer = new CSharpObjectCreation(otherClass)
                     {
                         Parameters =
                         {

@@ -35,12 +35,12 @@ public class CSharpProperty(CSharpIdentifier type, string name)
     /// <summary>
     /// The property's initializer (sets default value).
     /// </summary>
-    public CSharpConstructor? Initializer { get; set; }
+    public CSharpObjectCreation? Initializer { get; set; }
 
     /// <summary>
     /// An expression body for the property's getter.
     /// </summary>
-    public CSharpConstructor? GetterExpression { get; set; }
+    public CSharpObjectCreation? GetterExpression { get; set; }
 
     /// <summary>
     /// Indicates whether the property has a setter.
