@@ -70,10 +70,9 @@ public partial class CSharpIdentifier
     /// </summary>
     internal TypeSyntax ToSyntax()
     {
-        var type = GetPredefinedType(Name) ?? IdentifierName(Name);
-
-        if (TypeArguments.Count != 0)
-            type = GenericName(Identifier(Name)).WithTypeArgumentList(TypeArgumentList(SeparatedList(TypeArguments.Select(x => x.ToSyntax()))));
+        TypeSyntax type = TypeArguments.Count == 0
+            ? GetPredefinedType(Name) ?? IdentifierName(Name)
+            : GenericName(Identifier(Name)).WithTypeArgumentList(TypeArgumentList(SeparatedList(TypeArguments.Select(x => x.ToSyntax()))));
 
         return Nullable ? NullableType(type) : type;
     }
