@@ -89,7 +89,7 @@ public partial class CSharpIdentifier
     /// </summary>
     public CSharpIdentifier ToInterface()
     {
-        var result = new CSharpIdentifier(Namespace, "I" + Name);
+        var result = new CSharpIdentifier(Namespace, "I" + Name, Nullable);
         result.TypeArguments.AddRange(TypeArguments);
         return result;
     }
