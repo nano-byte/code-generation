@@ -16,12 +16,12 @@ Add a reference to the [`NanoByte.CodeGeneration`](https://www.nuget.org/package
 ```csharp
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 {
-    Description = "My class",
+    Summary = "My class",
     Properties =
     {
         new CSharpProperty(CSharpIdentifier.String, "MyProperty")
         {
-            Description = "My property",
+            Summary = "My property",
             HasSetter = true
         }
     }

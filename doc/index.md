@@ -19,12 +19,12 @@ You can then generate a class like this:
 ```csharp
 var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 {
-    Description = "My class",
+    Summary = "My class",
     Properties =
     {
         new CSharpProperty(CSharpIdentifier.String, "MyProperty")
         {
-            Description = "My property",
+            Summary = "My property",
             HasSetter = true
         }
     }
