@@ -22,6 +22,11 @@ public class CSharpEnumValue(string name)
     public string? Summary { get; set; }
 
     /// <summary>
+    /// An explicit underlying integer value. If <c>null</c>, the C# compiler assigns one automatically.
+    /// </summary>
+    public int? Value { get; set; }
+
+    /// <summary>
     /// Attributes to apply to the enum value.
     /// </summary>
     public List<CSharpAttribute> Attributes { get; } = new();
@@ -42,9 +47,14 @@ public class CSharpEnumValue(string name)
     /// Returns a Roslyn syntax for the enum value.
     /// </summary>
     internal EnumMemberDeclarationSyntax ToSyntax()
-        => EnumMemberDeclaration(Identifier(Name))
-          .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
-          .WithDocumentation(Summary);
+    {
+        var declaration = EnumMemberDeclaration(Identifier(Name))
+                         .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
+                         .WithDocumentation(Summary);
+        if (Value is {} value)
+            declaration = declaration.WithEqualsValue(EqualsValueClause(LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(value))));
+        return declaration;
+    }
 
     /// <summary>
     /// Returns the name of the enum value.

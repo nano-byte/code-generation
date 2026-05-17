@@ -51,4 +51,24 @@ namespace Namespace1
     }
 }");
     }
+
+    [Fact]
+    public void GeneratesExplicitUnderlyingValues()
+    {
+        Assert(new CSharpEnum(new CSharpIdentifier("Namespace1", "MyEnum"))
+        {
+            Values =
+            {
+                new CSharpEnumValue("Off") {Value = 0},
+                new CSharpEnumValue("On") {Value = 5}
+            }
+        }, @"namespace Namespace1
+{
+    public enum MyEnum
+    {
+        Off = 0,
+        On = 5
+    }
+}");
+    }
 }
