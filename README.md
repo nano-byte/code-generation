@@ -7,7 +7,7 @@ A thin wrapper around the [Roslyn API](https://docs.microsoft.com/en-us/dotnet/c
 
 This can be used to implement things like code generators for Swagger/OpenAPI Spec, ORMs, etc. using a type-safe interface rather than simple string templating.
 
-While you can use the Rosyln API directly, its immutable and thread-safe design can make using it somewhat verbose and cumbersome. This library provides a simpler (but also less flexible) wrapper.
+While you can use the Roslyn API directly, its immutable and thread-safe design can make using it somewhat verbose and cumbersome. This library provides a simpler (but also less flexible) wrapper.
 
 ## Usage
 

@@ -23,7 +23,7 @@ public class CSharpParameter(CSharpIdentifier type, string name)
     public string Name { get; } = name ?? throw new ArgumentNullException(nameof(name));
 
     /// <summary>
-    /// The value to set for this parameter when invoking it. Passes through a argument of the same name when not set.
+    /// The value to set for this parameter when invoking it. Passes through an argument of the same name when not set.
     /// </summary>
     public object? Value { get; set; }
 

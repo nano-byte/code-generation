@@ -48,6 +48,6 @@ internal static class SyntaxExtensions
             float x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
             double x => LiteralExpression(SyntaxKind.NumericLiteralExpression, Literal(x)),
             string x => LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(x)),
-            _ => throw new InvalidOperationException($"{value} is not literal/constant value.")
+            _ => throw new InvalidOperationException($"{value} is not a literal/constant value.")
         };
 }
