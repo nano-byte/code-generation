@@ -1,4 +1,16 @@
 - name: Home
   href: index.md
+- name: Identifiers
+  href: identifiers.md
+- name: Classes
+  href: classes.md
+- name: Interfaces
+  href: interfaces.md
+- name: Enums
+  href: enums.md
+- name: Attributes
+  href: attributes.md
+- name: Writing output
+  href: output.md
 - name: API
   href: api/

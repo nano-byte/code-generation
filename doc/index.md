@@ -31,5 +31,3 @@ var myClass = new CSharpClass(new CSharpIdentifier("MyNamespace", "MyClass"))
 };
 myClass.WriteToFile("MyClass.cs");
 ```
-
-Take a look at the documentation for <xref:NanoByte.CodeGeneration.CSharpClass> and <xref:NanoByte.CodeGeneration.CSharpInterface> to discover more features.
