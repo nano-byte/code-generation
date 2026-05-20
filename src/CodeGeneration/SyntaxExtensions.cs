@@ -21,7 +21,7 @@ internal static class SyntaxExtensions
         var tokens = new List<SyntaxToken> {XmlTextNewLine("\n")};
         foreach (string line in summary.Split('\n'))
         {
-            tokens.Add(XmlTextLiteral(" " + line));
+            tokens.Add(XmlTextLiteral(" " + line.TrimEnd('\r')));
             tokens.Add(XmlTextNewLine("\n"));
         }
         tokens.Add(XmlTextLiteral(" "));
