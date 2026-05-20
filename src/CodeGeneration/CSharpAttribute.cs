@@ -22,7 +22,7 @@ public class CSharpAttribute(CSharpIdentifier identifier)
     public List<object> Arguments { get; } = new();
 
     /// <summary>
-    /// Named Arguments for the attribute.
+    /// Named arguments for the attribute.
     /// </summary>
     public List<(string name, object value)> NamedArguments { get; } = new();
 
