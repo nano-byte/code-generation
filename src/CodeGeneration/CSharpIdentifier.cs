@@ -81,7 +81,11 @@ public partial class CSharpIdentifier
     /// Returns a copy of the identifier with <see cref="Nullable"/> set to <c>true</c>.
     /// </summary>
     public CSharpIdentifier ToNullable()
-        => new(Namespace, Name, nullable: true);
+    {
+        var result = new CSharpIdentifier(Namespace, Name, nullable: true);
+        result.TypeArguments.AddRange(TypeArguments);
+        return result;
+    }
 
     /// <summary>
     /// Returns a copy of the identifier with an <c>I</c> prepended to the <see cref="Name"/>.
