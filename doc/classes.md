@@ -70,6 +70,16 @@ new CSharpProperty(CSharpIdentifier.String, "Name")
 
 `Initializer`, `InitializerExpression` and `GetterExpression` are mutually exclusive.
 
+## Required members
+
+Set <xref:NanoByte.CodeGeneration.CSharpProperty.IsRequired> to emit the C# 11 `required` modifier, forcing callers to assign the property in an object initializer.
+
+```csharp
+new CSharpProperty(CSharpIdentifier.String, "Name") {HasSetter = true, IsRequired = true}
+```
+
+Ignored on <xref:NanoByte.CodeGeneration.CSharpInterface> members.
+
 ## Instantiating the generated class
 
 Call <xref:NanoByte.CodeGeneration.CSharpClass.ToObjectCreation> to obtain a <xref:NanoByte.CodeGeneration.CSharpObjectCreation> for the class. Useful when one generated class needs to instantiate another (for example as a property initializer).

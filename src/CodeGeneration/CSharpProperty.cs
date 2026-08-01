@@ -56,6 +56,11 @@ public class CSharpProperty(CSharpIdentifier type, string name)
     public bool HasSetter { get; set; }
 
     /// <summary>
+    /// Indicates whether the property is marked with the <c>required</c> modifier.
+    /// </summary>
+    public bool IsRequired { get; set; }
+
+    /// <summary>
     /// Returns a list of all namespaces referenced/used in this property.
     /// </summary>
     internal IEnumerable<string> GetNamespaces()
@@ -91,7 +96,11 @@ public class CSharpProperty(CSharpIdentifier type, string name)
         var declaration = PropertyDeclaration(Type.ToSyntax(), Identifier(Name));
 
         if (makePublic)
-            declaration = declaration.AddModifiers(Token(SyntaxKind.PublicKeyword));
+        {
+            declaration = IsRequired
+                ? declaration.AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.RequiredKeyword))
+                : declaration.AddModifiers(Token(SyntaxKind.PublicKeyword));
+        }
 
         declaration = declaration.WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
                                  .WithDocumentation(Summary);

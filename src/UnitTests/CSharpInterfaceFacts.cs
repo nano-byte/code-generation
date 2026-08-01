@@ -52,4 +52,22 @@ namespace Namespace1
     }
 }");
     }
+
+    [Fact]
+    public void IgnoresRequiredOnInterfaceMembers()
+    {
+        Assert(new CSharpInterface(new CSharpIdentifier(ns: "Namespace1", name: "MyInterface"))
+        {
+            Properties =
+            {
+                new CSharpProperty(CSharpIdentifier.String, "MyProperty") {HasSetter = true, IsRequired = true}
+            }
+        }, @"namespace Namespace1
+{
+    public partial interface MyInterface
+    {
+        string MyProperty { get; set; }
+    }
+}");
+    }
 }
