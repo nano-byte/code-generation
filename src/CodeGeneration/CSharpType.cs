@@ -21,6 +21,9 @@ public abstract class CSharpType(CSharpIdentifier identifier) : ICSharpType
     public List<CSharpAttribute> Attributes { get; } = new();
 
     /// <inheritdoc/>
+    public bool NullableContext { get; set; }
+
+    /// <inheritdoc/>
     public CompilationUnitSyntax ToSyntax()
     {
         var namespaces = GetNamespaces();
@@ -31,10 +34,17 @@ public abstract class CSharpType(CSharpIdentifier identifier) : ICSharpType
                     .WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
                     .WithDocumentation(Summary);
 
-        return CompilationUnit()
-              .WithUsings(List(namespaces.Select(x => UsingDirective(IdentifierName(x)))))
-              .AddMembers((Identifier.Namespace == null) ? member : NamespaceDeclaration(IdentifierName(Identifier.Namespace)).AddMembers(member))
-              .NormalizeWhitespace();
+        var unit = CompilationUnit()
+                  .WithUsings(List(namespaces.Select(x => UsingDirective(IdentifierName(x)))))
+                  .AddMembers((Identifier.Namespace == null) ? member : NamespaceDeclaration(IdentifierName(Identifier.Namespace)).AddMembers(member))
+                  .NormalizeWhitespace();
+
+        // Must be applied after NormalizeWhitespace(), which would otherwise reflow the directive
+        return NullableContext
+            ? unit.WithLeadingTrivia(
+                Trivia(NullableDirectiveTrivia(Token(TriviaList(Space), SyntaxKind.EnableKeyword, TriviaList()), isActive: true)),
+                CarriageReturnLineFeed)
+            : unit;
     }
 
     /// <summary>

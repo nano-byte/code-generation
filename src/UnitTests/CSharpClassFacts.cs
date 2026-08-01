@@ -87,4 +87,39 @@ namespace Namespace1
     }
 }");
     }
+
+    [Fact]
+    public void GeneratesNullableContextAndRequiredMembers()
+    {
+        var myClass = new CSharpIdentifier(ns: "Namespace1", name: "MyClass");
+        var myModel = new CSharpIdentifier(ns: "Models", name: "MyModel");
+        var listOfModels = CSharpIdentifier.ListOf(myModel);
+
+        Assert(new CSharpClass(myClass)
+        {
+            NullableContext = true,
+            Properties =
+            {
+                new CSharpProperty(CSharpIdentifier.String, "RequiredName") {HasSetter = true, IsRequired = true},
+                new CSharpProperty(CSharpIdentifier.String.ToNullable(), "OptionalName") {HasSetter = true},
+                new CSharpProperty(CSharpIdentifier.Int.ToNullable(), "OptionalAge") {HasSetter = true},
+                new CSharpProperty(CSharpIdentifier.String, "NullForgivingName") {HasSetter = true, InitializerExpression = "null!"},
+                new CSharpProperty(listOfModels, "Items") {HasSetter = true, Initializer = new CSharpObjectCreation(listOfModels)}
+            }
+        }, @"#nullable enable
+using Models;
+using System.Collections.Generic;
+
+namespace Namespace1
+{
+    public partial class MyClass
+    {
+        public required string RequiredName { get; set; }
+        public string? OptionalName { get; set; }
+        public int? OptionalAge { get; set; }
+        public string NullForgivingName { get; set; } = null!;
+        public List<MyModel> Items { get; set; } = new List<MyModel>();
+    }
+}");
+    }
 }

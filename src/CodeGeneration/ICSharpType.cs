@@ -24,6 +24,11 @@ public interface ICSharpType
     List<CSharpAttribute> Attributes { get; }
 
     /// <summary>
+    /// Indicates whether to emit a <c>#nullable enable</c> directive at the top of the file.
+    /// </summary>
+    bool NullableContext { get; set; }
+
+    /// <summary>
     /// Returns a Roslyn syntax for a file containing the type.
     /// </summary>
     CompilationUnitSyntax ToSyntax();
