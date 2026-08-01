@@ -35,11 +35,19 @@ public class CSharpProperty(CSharpIdentifier type, string name)
     /// <summary>
     /// The property's initializer (sets default value).
     /// </summary>
+    /// <remarks>Mutually exclusive with <see cref="InitializerExpression"/> and <see cref="GetterExpression"/>.</remarks>
     public CSharpObjectCreation? Initializer { get; set; }
+
+    /// <summary>
+    /// The property's initializer as a raw C# expression (e.g. <c>null!</c>).
+    /// </summary>
+    /// <remarks>Mutually exclusive with <see cref="Initializer"/> and <see cref="GetterExpression"/>.</remarks>
+    public string? InitializerExpression { get; set; }
 
     /// <summary>
     /// An expression body for the property's getter.
     /// </summary>
+    /// <remarks>Mutually exclusive with <see cref="Initializer"/> and <see cref="InitializerExpression"/>.</remarks>
     public CSharpObjectCreation? GetterExpression { get; set; }
 
     /// <summary>
@@ -88,11 +96,11 @@ public class CSharpProperty(CSharpIdentifier type, string name)
         declaration = declaration.WithAttributeLists(List(Attributes.Select(x => x.ToSyntax())))
                                  .WithDocumentation(Summary);
 
+        if (new[] {Initializer != null, InitializerExpression != null, GetterExpression != null}.Count(x => x) > 1)
+            throw new InvalidOperationException($"Only one of {nameof(Initializer)}, {nameof(InitializerExpression)} and {nameof(GetterExpression)} may be set for the same {nameof(CSharpProperty)}.");
+
         if (GetterExpression != null)
         {
-            if (Initializer != null)
-                throw new InvalidOperationException($"{nameof(GetterExpression)} and {nameof(Initializer)} may not be both set for the same {nameof(CSharpProperty)}.");
-
             if (HasSetter)
                 throw new InvalidOperationException($"{nameof(GetterExpression)} and {nameof(HasSetter)} may not be both set for the same {nameof(CSharpProperty)}.");
 
@@ -108,9 +116,11 @@ public class CSharpProperty(CSharpIdentifier type, string name)
                 accessors.Select(x => AccessorDeclaration(x).WithSemicolonToken(Token(SyntaxKind.SemicolonToken))))));
         }
 
-        if (Initializer != null)
+        ExpressionSyntax? initializer = Initializer?.ToInvocationSyntax()
+                                     ?? (InitializerExpression == null ? null : ParseExpression(InitializerExpression));
+        if (initializer != null)
         {
-            declaration = declaration.WithInitializer(EqualsValueClause(Initializer.ToInvocationSyntax()))
+            declaration = declaration.WithInitializer(EqualsValueClause(initializer))
                                      .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
         }
 

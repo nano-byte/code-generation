@@ -40,7 +40,7 @@ var myClass = new CSharpClass(new CSharpIdentifier("MyApp", "SampleEndpoint"))
 
 This emits a constructor that takes `referrer` as an argument and forwards it to the base call together with the literal `relativeUri: "./sample"`.
 
-## Property initializers and expression bodies
+## Property initializers
 
 Properties can be configured with a default value via <xref:NanoByte.CodeGeneration.CSharpProperty.Initializer> or as a computed read-only property via <xref:NanoByte.CodeGeneration.CSharpProperty.GetterExpression>. Both accept a <xref:NanoByte.CodeGeneration.CSharpObjectCreation>. Use `new ThisReference()` as a parameter value to pass `this` to the constructor call.
 
@@ -58,7 +58,17 @@ new CSharpProperty(otherClass, "Child")
 }
 ```
 
-`Initializer` and `GetterExpression` are mutually exclusive, and `GetterExpression` cannot be combined with `HasSetter = true`.
+`Initializer` can only express a constructor call. Set <xref:NanoByte.CodeGeneration.CSharpProperty.InitializerExpression> to emit an arbitrary C# expression instead; it is parsed and emitted as-is, so the caller is responsible for its validity.
+
+```csharp
+new CSharpProperty(CSharpIdentifier.String, "Name")
+{
+    HasSetter = true,
+    InitializerExpression = "default!"
+}
+```
+
+`Initializer`, `InitializerExpression` and `GetterExpression` are mutually exclusive.
 
 ## Instantiating the generated class
 
