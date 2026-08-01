@@ -38,4 +38,5 @@ var endpoint = new CSharpIdentifier("TypedRest.Endpoints.Generic", "ICollectionE
 ## Deriving identifiers
 
 - `ToNullable()` returns a copy with <xref:NanoByte.CodeGeneration.CSharpIdentifier.Nullable> set to `true`.
+- `ToNonNullable()` returns a copy with <xref:NanoByte.CodeGeneration.CSharpIdentifier.Nullable> set to `false`. Useful for stripping nullability off a type that flows in from elsewhere, e.g. a collection property that is always initialized.
 - `ToInterface()` returns a copy with an `I` prepended to the name. Useful when generating matching interface types alongside classes.
