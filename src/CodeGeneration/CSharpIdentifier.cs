@@ -78,6 +78,14 @@ public partial class CSharpIdentifier
     }
 
     /// <summary>
+    /// Returns a Roslyn syntax for the type identifier as a name (e.g. for an explicit interface specifier).
+    /// </summary>
+    internal NameSyntax ToNameSyntax()
+        => TypeArguments.Count == 0
+            ? IdentifierName(Name)
+            : GenericName(Identifier(Name)).WithTypeArgumentList(TypeArgumentList(SeparatedList(TypeArguments.Select(x => x.ToSyntax()))));
+
+    /// <summary>
     /// Returns a copy of the identifier with <see cref="Nullable"/> set to <c>true</c>.
     /// </summary>
     public CSharpIdentifier ToNullable()

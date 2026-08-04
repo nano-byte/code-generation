@@ -61,7 +61,13 @@ public class CSharpClass(CSharpIdentifier identifier) : CSharpInterface(identifi
         if (BaseConstructor != null && BaseConstructor.Parameters.Count != 0)
             yield return BaseConstructor.ToDeclarationSyntax(Identifier.Name);
 
-        foreach (var member in Properties.Select(property => property.ToSyntax(makePublic: true)))
-            yield return member;
+        foreach (var property in Properties)
+            yield return property.ToSyntax(makePublic: true);
+
+        foreach (var indexer in Indexers)
+            yield return indexer.ToSyntax(makePublic: true);
+
+        foreach (var method in Methods)
+            yield return method.ToSyntax(makePublic: true);
     }
 }

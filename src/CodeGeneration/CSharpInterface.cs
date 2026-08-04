@@ -21,6 +21,16 @@ public class CSharpInterface(CSharpIdentifier identifier) : CSharpType(identifie
     /// </summary>
     public List<CSharpProperty> Properties { get; } = new();
 
+    /// <summary>
+    /// A list of indexers this type exposes.
+    /// </summary>
+    public List<CSharpIndexer> Indexers { get; } = new();
+
+    /// <summary>
+    /// A list of methods this type exposes.
+    /// </summary>
+    public List<CSharpMethod> Methods { get; } = new();
+
     /// <inheritdoc/>
     protected override MemberDeclarationSyntax GetMemberDeclaration()
     {
@@ -51,6 +61,12 @@ public class CSharpInterface(CSharpIdentifier identifier) : CSharpType(identifie
         foreach (string ns in Properties.SelectMany(x => x.GetNamespaces()))
             namespaces.Add(ns);
 
+        foreach (string ns in Indexers.SelectMany(x => x.GetNamespaces()))
+            namespaces.Add(ns);
+
+        foreach (string ns in Methods.SelectMany(x => x.GetNamespaces()))
+            namespaces.Add(ns);
+
         return namespaces;
     }
 
@@ -64,5 +80,14 @@ public class CSharpInterface(CSharpIdentifier identifier) : CSharpType(identifie
     /// Returns a list of Roslyn syntax for members of this type.
     /// </summary>
     protected virtual IEnumerable<MemberDeclarationSyntax> GetMemberDeclarations()
-        => Properties.Select(property => property.ToSyntax());
+    {
+        foreach (var property in Properties)
+            yield return property.ToSyntax();
+
+        foreach (var indexer in Indexers)
+            yield return indexer.ToSyntax();
+
+        foreach (var method in Methods)
+            yield return method.ToSyntax();
+    }
 }

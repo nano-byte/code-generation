@@ -54,6 +54,44 @@ namespace Namespace1
     }
 
     [Fact]
+    public void GeneratesIndexersAndMethods()
+    {
+        var myModel = new CSharpIdentifier(ns: "Models", name: "MyModel");
+
+        Assert(new CSharpInterface(new CSharpIdentifier(ns: "Namespace1", name: "MyInterface"))
+        {
+            Indexers =
+            {
+                new CSharpIndexer(myModel, new CSharpParameter(CSharpIdentifier.String, "id")) {Summary = "My indexer"}
+            },
+            Methods =
+            {
+                new CSharpMethod(myModel, "MyMethod")
+                {
+                    Summary = "My method",
+                    Parameters = {new CSharpParameter(CSharpIdentifier.String, "id")}
+                }
+            }
+        }, @"using Models;
+
+namespace Namespace1
+{
+    public partial interface MyInterface
+    {
+        /// <summary>
+        /// My indexer
+        /// </summary>
+        MyModel this[string id] { get; }
+
+        /// <summary>
+        /// My method
+        /// </summary>
+        MyModel MyMethod(string id);
+    }
+}");
+    }
+
+    [Fact]
     public void IgnoresRequiredOnInterfaceMembers()
     {
         Assert(new CSharpInterface(new CSharpIdentifier(ns: "Namespace1", name: "MyInterface"))

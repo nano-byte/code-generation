@@ -80,6 +80,18 @@ new CSharpProperty(CSharpIdentifier.String, "Name") {HasSetter = true, IsRequire
 
 Ignored on <xref:NanoByte.CodeGeneration.CSharpInterface> members.
 
+## Explicit interface implementations
+
+Set <xref:NanoByte.CodeGeneration.CSharpIndexer.ExplicitInterface> or <xref:NanoByte.CodeGeneration.CSharpMethod.ExplicitInterface> to implement a member for one specific interface. The body is an arbitrary C# expression, emitted as-is.
+
+```csharp
+new CSharpIndexer(elementInterface, new CSharpParameter(CSharpIdentifier.String, "id"))
+{
+    ExplicitInterface = new CSharpIdentifier("MyApp", "IIndexer") {TypeArguments = {elementInterface}},
+    GetterExpression = "this[id]"
+}
+```
+
 ## Instantiating the generated class
 
 Call <xref:NanoByte.CodeGeneration.CSharpClass.ToObjectCreation> to obtain a <xref:NanoByte.CodeGeneration.CSharpObjectCreation> for the class. Useful when one generated class needs to instantiate another (for example as a property initializer).

@@ -89,6 +89,62 @@ namespace Namespace1
     }
 
     [Fact]
+    public void GeneratesExplicitInterfaceImplementations()
+    {
+        var myClass = new CSharpIdentifier(ns: "Namespace1", name: "MyClass");
+        var myModel = new CSharpIdentifier(ns: "Models", name: "MyModel");
+        var elementInterface = new CSharpIdentifier(ns: "Namespace1", name: "IMyElementEndpoint");
+        var indexerInterface = new CSharpIdentifier("TypedRest.Endpoints.Generic", "IIndexerEndpoint") {TypeArguments = {elementInterface}};
+        var collectionInterface = new CSharpIdentifier("TypedRest.Endpoints.Generic", "ICollectionEndpoint") {TypeArguments = {myModel, elementInterface}};
+        var task = new CSharpIdentifier("MorseCode.ITask", "ITask") {TypeArguments = {elementInterface.ToNullable()}};
+
+        Assert(new CSharpClass(myClass)
+        {
+            NullableContext = true,
+            Indexers =
+            {
+                new CSharpIndexer(elementInterface, new CSharpParameter(CSharpIdentifier.String, "id"))
+                {
+                    ExplicitInterface = indexerInterface,
+                    GetterExpression = "this[id]"
+                },
+                new CSharpIndexer(elementInterface, new CSharpParameter(myModel, "entity"))
+                {
+                    ExplicitInterface = collectionInterface,
+                    GetterExpression = "this[entity]"
+                }
+            },
+            Methods =
+            {
+                new CSharpMethod(task, "CreateAsync")
+                {
+                    ExplicitInterface = collectionInterface,
+                    Parameters =
+                    {
+                        new CSharpParameter(myModel, "entity"),
+                        new CSharpParameter(new CSharpIdentifier("System.Threading", "CancellationToken"), "cancellationToken")
+                    },
+                    BodyExpression = "CreateAsync(entity, cancellationToken)"
+                }
+            }
+        }, @"#nullable enable
+using Models;
+using MorseCode.ITask;
+using System.Threading;
+using TypedRest.Endpoints.Generic;
+
+namespace Namespace1
+{
+    public partial class MyClass
+    {
+        IMyElementEndpoint IIndexerEndpoint<IMyElementEndpoint>.this[string id] => this[id];
+        IMyElementEndpoint ICollectionEndpoint<MyModel, IMyElementEndpoint>.this[MyModel entity] => this[entity];
+        ITask<IMyElementEndpoint?> ICollectionEndpoint<MyModel, IMyElementEndpoint>.CreateAsync(MyModel entity, CancellationToken cancellationToken) => CreateAsync(entity, cancellationToken);
+    }
+}");
+    }
+
+    [Fact]
     public void GeneratesNullableContextAndRequiredMembers()
     {
         var myClass = new CSharpIdentifier(ns: "Namespace1", name: "MyClass");
