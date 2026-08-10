@@ -16,6 +16,11 @@
       "matchPackagePatterns": ["docfx", "SourceLink", "CodeAnalysis"],
       "automerge": true,
       "automergeType": "branch"
+    },
+    {
+      "description": "Support older .NET SDK / C# compiler versions",
+      "matchPackageNames": ["Microsoft.CodeAnalysis.CSharp"],
+      "allowedVersions": "<5.4"
     }
   ]
 }
