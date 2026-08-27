@@ -18,9 +18,10 @@
       "automergeType": "branch"
     },
     {
-      "description": "Support older .NET SDK / C# compiler versions",
+      "description": "This library ships inside source generator packages, so it must reference the oldest Roslyn it needs; hosts running an older compiler (e.g. docfx) refuse to load analyzer assemblies that reference a newer one",
       "matchPackageNames": ["Microsoft.CodeAnalysis.CSharp"],
-      "allowedVersions": "<5.4"
+      "matchFileNames": ["src/CodeGeneration/CodeGeneration.csproj"],
+      "allowedVersions": "<4.9"
     }
   ]
 }

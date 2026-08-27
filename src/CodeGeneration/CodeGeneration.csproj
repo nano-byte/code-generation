@@ -40,7 +40,8 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
+    <!-- Keep this at the oldest Roslyn version actually needed. This library ships inside source generator packages, and hosts with an older compiler (e.g. docfx) refuse to load analyzer assemblies that reference a newer one. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="All" />
   </ItemGroup>
 
