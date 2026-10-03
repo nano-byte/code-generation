@@ -9,5 +9,5 @@ else
     dotnet="../0install.sh run --version 10.0..!10.1 https://apps.0install.net/dotnet/sdk.xml"
 fi
 
-# Unit tests
+echo "Run unit tests"
 $dotnet test --no-build --logger trx --configuration Release
