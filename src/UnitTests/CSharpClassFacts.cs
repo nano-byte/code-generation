@@ -1,3 +1,5 @@
+using AwesomeAssertions;
+
 namespace NanoByte.CodeGeneration;
 
 public class CSharpClassFacts : CSharpTypeFactsBase
@@ -86,6 +88,45 @@ namespace Namespace1
         public MyInterface<MyModel> MyOtherProperty { get; set; } = new OtherClass<MyModel>(this, arg2: ""value"");
     }
 }");
+    }
+
+    [Fact]
+    public void GeneratesObjectCreationArguments()
+    {
+        var myClass = new CSharpIdentifier(ns: "Namespace1", name: "MyClass");
+        var baseClass = new CSharpIdentifier(ns: "Namespace2", name: "BaseClass");
+        var serializerBase = new CSharpIdentifier(ns: "Namespace3", name: "SerializerBase");
+        var serializer = new CSharpIdentifier(ns: "Namespace4", name: "MySerializer");
+
+        var classUnderTest = new CSharpClass(myClass)
+        {
+            BaseConstructor = new CSharpObjectCreation(baseClass)
+            {
+                Parameters =
+                {
+                    new CSharpParameter(CSharpIdentifier.Uri, "uri"),
+                    new CSharpParameter(serializerBase, "serializer") {Value = new CSharpObjectCreation(serializer)}
+                }
+            }
+        };
+
+        Assert(classUnderTest, @"using Namespace2;
+using Namespace3;
+using Namespace4;
+using System;
+
+namespace Namespace1
+{
+    public partial class MyClass : BaseClass
+    {
+        public MyClass(Uri uri) : base(uri, serializer: new MySerializer())
+        {
+        }
+    }
+}");
+
+        classUnderTest.ToObjectCreation().Parameters.Should().ContainSingle()
+                      .Which.Name.Should().Be("uri", because: "object creation values are not forwarded as constructor parameters");
     }
 
     [Fact]

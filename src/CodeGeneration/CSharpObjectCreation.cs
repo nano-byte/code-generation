@@ -29,7 +29,7 @@ public class CSharpObjectCreation(CSharpIdentifier type)
         foreach (string ns in Type.GetNamespaces())
             yield return ns;
 
-        foreach (string ns in Parameters.SelectMany(x => x.Type.GetNamespaces()))
+        foreach (string ns in Parameters.SelectMany(x => x.GetNamespaces()))
             yield return ns;
     }
 
