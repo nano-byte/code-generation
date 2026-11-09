@@ -68,11 +68,8 @@ public class CSharpProperty(CSharpIdentifier type, string name)
         foreach (string ns in Type.GetNamespaces())
             yield return ns;
 
-        foreach (string? ns in Attributes.Select(x => x.Identifier.Namespace))
-        {
-            if (ns != null)
-                yield return ns;
-        }
+        foreach (string ns in Attributes.SelectMany(x => x.GetNamespaces()))
+            yield return ns;
 
         if (Initializer != null)
         {

@@ -53,6 +53,36 @@ namespace Namespace1
     }
 
     [Fact]
+    public void GeneratesTypeOfAttributeArguments()
+    {
+        var myEnum = new CSharpIdentifier(ns: "Namespace1", name: "MyEnum");
+
+        Assert(new CSharpEnum(myEnum)
+        {
+            Attributes =
+            {
+                new CSharpAttribute(new CSharpIdentifier("Attributes", "ConverterAttribute"))
+                {
+                    Arguments = {new CSharpIdentifier("Converters", "EnumConverter") {TypeArguments = {myEnum}}},
+                    NamedArguments = {("Fallback", new CSharpIdentifier("Fallbacks", "FallbackConverter"))}
+                }
+            },
+            Values = {new CSharpEnumValue("Value1")}
+        }, @"using Attributes;
+using Converters;
+using Fallbacks;
+
+namespace Namespace1
+{
+    [Converter(typeof(EnumConverter<MyEnum>), Fallback = typeof(FallbackConverter))]
+    public enum MyEnum
+    {
+        Value1
+    }
+}");
+    }
+
+    [Fact]
     public void GeneratesExplicitUnderlyingValues()
     {
         Assert(new CSharpEnum(new CSharpIdentifier("Namespace1", "MyEnum"))

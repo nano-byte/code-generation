@@ -35,13 +35,7 @@ public class CSharpEnumValue(string name)
     /// Returns a list of all namespaces referenced/used in this enum value.
     /// </summary>
     internal IEnumerable<string> GetNamespaces()
-    {
-        foreach (var attribute in Attributes)
-        {
-            if (attribute.Identifier.Namespace != null)
-                yield return attribute.Identifier.Namespace;
-        }
-    }
+        => Attributes.SelectMany(x => x.GetNamespaces());
 
     /// <summary>
     /// Returns a Roslyn syntax for the enum value.

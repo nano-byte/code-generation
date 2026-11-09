@@ -54,11 +54,8 @@ public abstract class CSharpType(CSharpIdentifier identifier) : ICSharpType
     {
         var namespaces = new SortedSet<string>();
 
-        foreach (string? ns in Attributes.Select(x => x.Identifier.Namespace))
-        {
-            if (ns != null)
-                namespaces.Add(ns);
-        }
+        foreach (string ns in Attributes.SelectMany(x => x.GetNamespaces()))
+            namespaces.Add(ns);
 
         return namespaces;
     }
